@@ -1,0 +1,11 @@
+xyz123:
+  name: xyz123
+  password_digest: <%= User.digest('password') %>
+  security_question: question
+  security_answer: answer
+
+qwe123:
+  name: qwe123
+  password_digest: <%= User.digest('password') %>
+  security_question: question
+  security_answer: answer

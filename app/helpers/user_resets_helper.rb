@@ -1,0 +1,2 @@
+module UserResetsHelper
+end

@@ -1,0 +1,22 @@
+<% provide(:title, "Reset password')
+
+<br></br>
+<h1>Reset password</h1>
+<br></br>
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+      <%= render 'shared/error_message', object:f.object %>
+
+      <%= f.label :password, "New Password" %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation your new password" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+ 
+      <br></br>
+      <%= f.submit "Update password", class: "btn btn-primary btn-md" %>
+      <% end %>
+  </div>
+</div>

@@ -1,0 +1,253 @@
+// Place all the styles related to the StaticPage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+$silver-gray: #a7a7a7;
+$deep-gray: #8b8b8b;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* miscellaneous */
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+/* universal */
+
+body {
+  padding-top: 60px;
+  }
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+
+  h1 {
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+
+  p {
+    margin-top: 20px;
+  }
+  
+  .skip {
+    font-size: 1.3em;
+  }
+}
+
+
+/* typography */
+
+
+/* header */
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.header_user_img {
+  height: 35px !important;
+  width: auto !important;
+  margin-top: 8px;
+}
+
+/* footer */
+
+footer {
+  padding-top: 5px;
+  color: $silver-gray;
+  
+
+  a {
+    color: $deep-gray;
+    &:hover {
+       color: black;
+    }
+  }
+
+  small {
+    float: left;
+  }
+
+  ul {
+     float: right;
+     list-style: none;
+     li {
+        float: left;
+        margin-left: 15px;
+     }
+  }
+
+
+}
+
+
+/* sidebar */
+
+aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+   }
+
+}
+
+.user_info{
+  text-align: center;
+  h1 {
+    margin-top: 5px;
+    text-align: center;
+  }
+}
+
+
+/* posts */
+.posts {
+  list-style: none;
+  padding: 0;
+  .post_li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .title {
+    display: block;
+    margin-left: 30px;
+  nobr {
+      position: absolute;
+      left: 600px;
+    }
+  }
+  .content {
+    display: block;
+    margin-left: 30px;   
+  }
+  .article {
+    display: block;
+    margin-left: 30px;
+  }
+  .timestamp {
+    color: #a7a7a7;
+    display: block;
+    margin-left: 30px;
+  }
+  
+}
+
+.avatar_img {
+  img {
+    float:left;
+    width: 50px !important;
+    height: auto !important;
+  }
+}
+
+.digg_pagination {
+  background: white;
+  cursor: default;
+  text-align: center;
+  /* self-clearing method: */ }
+  .digg_pagination a, .digg_pagination span, .digg_pagination em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px; }
+  .digg_pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd;
+    display: none; }
+  .digg_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #2e6ab1;
+    color: white;
+    border: 1px solid #2e6ab1; }
+  .digg_pagination a {
+    text-decoration: none;
+    color: #105cb6;
+    border: 1px solid #9aafe5; }
+    .digg_pagination a:hover, .digg_pagination a:focus {
+      color: #000033;
+      border-color: #000033; }
+  .digg_pagination .page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; }
+    .digg_pagination .page_info b {
+      color: #000033;
+      background: #6aa6ed;
+      padding: 0.1em 0.25em; }
+  .digg_pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  * html .digg_pagination {
+    height: 1%; }
+  *:first-child + html .digg_pagination {
+    overflow: hidden; }
+
+  

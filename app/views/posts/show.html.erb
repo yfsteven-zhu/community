@@ -1,0 +1,44 @@
+<% provide(:title, @post.title) %>
+<% if logged_in? %>
+  <div class = "row">
+    <aside class = "col-md-4">
+      
+    </aside>
+    <div class = "col-md-8">
+      <div class="postbody">
+        <h2><%= sanitize @post.title %></h2>
+        <h5>Author: <%= sanitize link_to @post.user.name, @post.user %>,
+                posted <%=time_ago_in_words(@post.created_at) %></h5>
+        <hr></hr>     
+        <p><%= sanitize @post.content, 
+             tags:%w(p table tbody tr td u s em blockquote ol ul li strong sub sup span hr img a object br ),
+                attributes: %w(id name alt src color href style border cellpadding cellspacing class) %></p>
+        <hr></hr>
+        <div class="text-center">
+          <%= link_to "Back", community_path, class: "btn btn-lg btn-primary btn-sm" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class = "row">
+    <aside class = "col-md-4">
+    </aside>
+    <div class = "col-md-8">
+      <div class="postbody">
+        <h2><%= @post.title %></h2>
+        <h5>Author: <%=sanitize link_to @post.user.name, @post.user %>,
+                posted <%=time_ago_in_words(@post.created_at) %></h5>
+        <hr></hr> 
+          
+        <p><%= sanitize @post.content, 
+             tags:%w(p table tbody tr td u s em blockquote ol ul li strong sub sup span hr img a object br ),
+                attributes: %w(id name alt src color href style border cellpadding cellspacing class) %></p>
+        <hr></hr>
+        <div class="text-center">
+          <%= link_to "Back", community_path, class: "btn btn-lg btn-primary btn-sm" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

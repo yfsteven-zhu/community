@@ -1,0 +1,38 @@
+<%= form_for(@post) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class = "topicfield">
+    <%= f.text_field :title, placeholder: "Topic..." %>
+  </div>
+  <div class = "contentfield">
+    <%= f.text_area :content, placeholder: "Compose new post..." %>
+  </div>
+  <%= f.submit "Quick Post", class: "btn btn-primary" %>
+  <hr></hr>
+  <%= link_to "Post", postnew_path, class: "btn btn-primary custom" %>
+<% end %>
+
+
+<script type="text/javascript">
+  $('#post_picture').bind('change', function(){
+     var size_in_megabytes = this.files[0].size/1024/1024;
+     if (size_in_megabytes > 5) {
+        alert('Maximum file size is 5MB. Please choose a smaller file.');
+     }
+  });
+</script>
+
+<script>
+  function readURL(input) {
+    if (input.files&& input.files[0]) {
+       var reader = new FileReader();
+
+       reader.onload = function (e) {
+       $('#img_prev')
+          .attr('src', e.target.result)
+          .height(150);
+        };
+
+       reader.readAsDataURL(input.files[0]);
+     }
+   }
+</script>

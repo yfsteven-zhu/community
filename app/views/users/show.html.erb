@@ -1,0 +1,30 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_profile">
+        <p class="p2"><strong><%= @user.name %></strong></p>
+        <div class="profile_img">
+        <% if @user.picture? %>
+          <%= image_tag @user.picture.url %>
+        <% else %>
+          <%= image_tag ('default.jpg')%>
+        <% end %>
+        </div>
+        <div class="posts_profile">
+          Has <%= pluralize(@user.posts.count, "post") %><br>
+          Has joined <%= time_ago_in_words(@user.created_at) %>
+
+        </div>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3>have posted</h3>
+    <% if @user.posts.any? %>
+      <ol class="posts">
+        <%= render @posts %>
+      </ol>
+      <%= will_paginate @posts %>
+    <% end %>
+  </div>
+</div>
+

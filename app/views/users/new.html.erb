@@ -1,0 +1,33 @@
+<% provide(:title, 'Sign up' ) %>
+
+<br></br>
+<h1 class=user_h1>Sign up</h1>
+<br></br>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= form_for @user, url:signup_path do |f|  %>
+       <%= render 'shared/error_messages', object: f.object %>
+
+       <%= f.label :name, "User Name" %>
+       <%= f.text_field :name, class: 'form-control', 
+                       placeholder:"only allows letter, number, _, - and @" %>
+   
+       <%= f.label :password %>
+       <%= f.password_field :password,
+           placeholder:"minimum length: 6, no space allowed", class: 'form-control' %>
+  
+       <%= f.label :password_confirmation, "Confirm Password" %>
+       <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+       <%= f.label :security_question, "Set a security question for resetting password" %>
+       <%= f.text_field :security_question, class: 'form-control' %>
+      
+       <%= f.label :security_answer, "Set a answer from your security question" %>
+       <%= f.text_field :security_answer, class: 'form-control' %>
+
+       <br></br>
+       <%= f.submit "Join now", class: "btn btn-primary btn-md" %>
+    <% end %>
+    <p>already user? <%= link_to "Log in!", login_path %></p>
+  </div>
+</div>

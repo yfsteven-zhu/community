@@ -1,0 +1,13 @@
+<% provide(:title, "Home") %>
+
+<div class="center Jumbotron">
+
+  <h1>Welcome to Community Prototype</h1>
+
+  <%= link_to "Join now !", signup_path, class: "btn btn-lg btn-primary" %>
+  <p>already user? <%= link_to "Log in!", login_path %></p>
+
+  <p class="skip">Not now? Click <u><%= link_to "Here", community_path %></u> to enter community!</p>
+</div>
+
+

@@ -1,0 +1,64 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.postbody{
+   p {
+     text-indent: 0px;
+   }
+}
+
+.edit_post{
+   font-size: 24px;
+}
+
+.edit_post_form{
+  border-radius: 5px;
+}
+
+.title{
+  a{
+    font-size: 22px;
+  }
+  nobr {
+    a {
+      font-size: 14px;
+    }
+  } 
+}
+
+.article {
+   padding: 3px;
+}
+.article .text-body {  
+  
+}
+
+.article .text-body.short{
+  max-height: 200px;
+  width: 550px;
+  height: auto;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+.text{
+  margin-left: 10px;
+  img{
+    width: 145px !important;
+    height: auto !important;
+   }
+}
+
+
+
+.article .text-body.full{
+  height: auto;
+  width: 550px;
+}  
+
+.read-more {
+   cursor: pointer;
+   display: inline-block;    
+   color: #337ab7;
+}

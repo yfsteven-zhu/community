@@ -1,0 +1,194 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+.user_h1 {
+   text-align: center;
+}
+/* miscellaneous */
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+img[src='#'] {
+    display: none;
+}
+
+/* sidebar */
+
+aside {
+  section.user_info {
+    margin-top: 70px;
+    img {
+      height: 150px !important;
+      width:auto !important;
+    }
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+
+    .span_profile {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+      text-align: center;
+    }
+    .info_h1 {
+      font-size: 1.5em;
+      text-align: center;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+    }
+    .span_post {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+      text-align: center;
+    }
+  }
+
+  section.user_signup {
+    text-align: center;
+    margin-top: 70px;
+    img {
+      height: 150px !important;
+      width:auto !important;
+    }
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+
+    .span_login {
+      display: block;
+      line-height: 1;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .span_signup {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+  }
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+   }
+}
+
+
+/* forms */
+input, textarea, select, .uneditable-input{
+  border: 1px solid #bbb;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.postbtn {
+  width: 100px;
+  height:40px;
+  float: right;
+  margin-right: 30px;
+  font-size: 18px;
+  margin-top: -10px;
+  background-color: #5e5f61;
+}
+
+.editbtn {
+  float:right;
+  margin-right:10px;
+}
+
+.deletebtn {
+  float:right;
+  margin-right:33px;
+}
+
+.search-form {
+  text-align: center;
+  height: 40px;
+  margin-top: 30px;
+}
+
+#q {
+  width:400px;
+  margin-left: 20px;
+}
+
+.submitbtn {
+  width:100px;
+}
+
+em {
+  background: yellow;
+}
+
+.user_profile {
+
+
+  .p2 {
+  font-size: 30px;
+  }
+  .profile_img{
+  float:left;
+  width: 215px;
+  height: 215px;
+  }
+  .posts_profile{
+  float:right;
+  margin-top: 175px;
+  font-size:16px;
+  color: darkslateblue;
+  }
+
+  img {
+  height: 215px;
+  }
+}
+

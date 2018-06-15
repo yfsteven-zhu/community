@@ -1,0 +1,69 @@
+<li id="post-<%= post.id%>" class="post_li">
+  <aside class="avatar_img">
+  <% if post.user.picture?%>
+    <%= image_tag post.user.picture.url %>
+  <% else %>
+    <%= image_tag ('default.jpg') %>
+  <% end %>
+  </aside>
+  <section class="post_body">
+  <span class="title">
+    <%= sanitize link_to (raw(post.title)), post %>
+  </span>
+  <div class="article">
+    <div class="text-body short">
+    <div class="text">
+       <%= sanitize post.content, 
+        tags:%w(p table tbody tr td u s em blockquote ol ul li strong sub sup span hr img a object br ),
+        attributes: %w(id name alt src color href style border cellpadding cellspacing class) %>
+    </div>
+    </div>
+    <span class="read-more">read more</span>
+  </div>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(post.created_at) %> ago by 
+    <%= sanitize link_to post.user.name, post.user, target: :_blank %>
+    <% if current_user && current_user.admin? %>    
+      <%= link_to "delete", post, method: :delete,
+                                     data: { confirm: "You sure?" }, class:"deletebtn" %>
+      <%= link_to "edit", edit_post_path(post), class:"editbtn" %>
+    <% end %>
+    <% if current_user?(post.user)&&!current_user.admin? %>
+      <%= link_to "delete", post, method: :delete,
+                                     data: { confirm: "You sure?" }, class:"deletebtn" %>      
+      <%= link_to "edit", edit_post_path(post), class:"editbtn" %>
+
+    <% end %>
+  </span>
+  </section>
+</li>
+
+<script>
+$(document).ready(function(){ 
+  var moretext = "read more";
+  var lesstext = "read less";
+
+  $(".read-more").click(function(){
+     var $elem = $(this).parent().find(".text-body");
+     if($elem.hasClass("short"))
+     {
+       $elem.removeClass("short").addClass("full");
+     }
+      else
+      {
+       $elem.removeClass("full").addClass("short");
+
+      }
+
+   if($(this).hasClass("less")){
+      $(this).removeClass("less");
+      $(this).html(moretext);
+    } else {
+      $(this).addClass("less");
+      $(this).html(lesstext);
+    }
+
+    });
+});
+</script>
+

@@ -1,0 +1,54 @@
+<% provide(:title, "Edit user") %>
+
+<br></br>
+<h1 class="user_h1">Update Profile</h1>
+<br></br>
+
+<div class = "row">
+  <div class = "col-md-4 col-md-offset-4">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <% if @user.picture? %>
+        <%= image_tag current_user.picture.url, class:"img_preview" %>
+      <% else %>
+        <%= image_tag ('default.jpg'), :size => "100x100"%>
+      <% end %>
+        <nobr>&nbsp;&nbsp;&nbsp;&nbsp; update  to: &nbsp;&nbsp;&nbsp;&nbsp;
+             <img id="img_prev" src="#" alt="your image"/>
+        </nobr>
+      <br></br>
+      <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png',onchange:"readURL(this)"  %>
+      <%= f.label :name, "User Name" %>
+      <%= f.text_field :name, class: 'form-control', readonly: true %>
+
+      <%= f.label :password, "New Password" %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirm Password" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <br></br>
+      <%= f.submit "Save changes", class: "btn btn-primary btn-md" %>
+    <% end %>
+
+  </div>
+</div>
+
+
+
+<script>
+  function readURL(input) {
+    if (input.files&& input.files[0]) {
+       var reader = new FileReader();
+
+       reader.onload = function (e) {
+       $('#img_prev')
+          .attr('src', e.target.result)
+          .height(150);
+        };
+
+       reader.readAsDataURL(input.files[0]);
+     }
+   }
+</script>

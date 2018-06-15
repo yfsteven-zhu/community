@@ -1,0 +1,25 @@
+<%= form_for search_path, method: :get do |f| %>
+  <div class="search-form">
+    <%= f.label "Search for" %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "Go", name: nil, class:"submitbtn" %>
+  </div>
+<% end %>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <h3>
+        <%= sanitize link_to post.try(:highlight).try(:title)? post.highlight.title[0].html_safe : post.title,controller: "posts", action: "show", id: post._id%>
+      </h3>
+      <h4>posted by <%= post.user.name %></h4>
+      <% if post.try(:highlight).try(:content) %>
+        <% post.highlight.content.each do |snippet| %>
+        <%= sanitize snippet ,
+           tags:%w(p table tbody tr td u s em blockquote ol ul li strong sub sup span hr img a object br ),
+        attributes: %w(id name alt src color href style border cellpadding cellspacing class) %>
+        <% end %>
+      <% end %>
+      </li>
+  <% end %>
+</ul>
