@@ -6,6 +6,9 @@
          WELCOME! <%= current_user.name %>
         <%= link_to "Post", postnew_path, class: "btn btn-primary postbtn" %>
       </h3>
+      <h4>
+        <%= link_to "recent", reply_static_page_index_path, class:"btn btn-primary" %>
+      </h4>
       <ol class = "posts">
         <%= render @posts %>
       </ol>

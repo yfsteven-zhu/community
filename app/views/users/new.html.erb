@@ -19,12 +19,6 @@
        <%= f.label :password_confirmation, "Confirm Password" %>
        <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-       <%= f.label :security_question, "Set a security question for resetting password" %>
-       <%= f.text_field :security_question, class: 'form-control' %>
-      
-       <%= f.label :security_answer, "Set a answer from your security question" %>
-       <%= f.text_field :security_answer, class: 'form-control' %>
-
        <br></br>
        <%= f.submit "Join now", class: "btn btn-primary btn-md" %>
     <% end %>

@@ -15,7 +15,23 @@ Rails.application.routes.draw do
   resources :users
   resources :password_resets,  only: [:new, :create, :edit, :update]
   resources :user_resets,  only: [:new]
-  resources :posts
+
+  resources :posts do
+    resources :comments, except: [:index, :new, :show] do
+      member do
+        get :reply
+      end
+    end
+  end
+
+  resources :static_page, path:"community" do
+    collection do
+        get :recent
+        get :reply
+    end
+  end
+
+
   #resources :posts,  only: [:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

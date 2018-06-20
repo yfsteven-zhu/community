@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :admin_user, only: [:edit, :update, :destroy]
 
+  impressionist :actions=>[:show]
+
   def new
     @post = Post.new
   end
@@ -14,7 +16,7 @@ class PostsController < ApplicationController
       redirect_to community_path
     else
       @posts = Post.all.paginate(page: params[:page], :per_page => 5)
-      render 'static_page/community'
+      render 'new'
     end
   end
 
@@ -48,6 +50,7 @@ class PostsController < ApplicationController
     flash[:success] = "Post deleted"
     redirect_to request.referrer ||community_path
   end
+
 
   private
 

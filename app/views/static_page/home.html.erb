@@ -1,13 +1,73 @@
 <% provide(:title, "Home") %>
 
-<div class="center Jumbotron">
+<div class="home_page_background">
+  <div class="home_page_welcome">
+    <h1 class="welcome">Welcome to Community Prototype</h1>
+    <p>
+      Community Prototype is an ultimate social community. By joining us, you will join our big family and where
+      you can build your posts and leave your comments to share your own thoughts with
+      hundreds of other members like you in this family. Come and make friends here!
+      <br>
+      <br>
+      Still hesitate to join us? Explore our community and see what you can find here.
+    </p>
+    <%= link_to "Explore our community &nbsp;&nbsp;&nbsp;&nbsp;>".html_safe, community_path, class: "btn btn-md btn-primary" %>
+  </div>
 
-  <h1>Welcome to Community Prototype</h1>
+  <div class="home_page_signup">
+    <h1 class="home_page_signup_h1">Join Today!</h1>
+    <%= form_for @user, url:signup_path do |f|  %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-  <%= link_to "Join now !", signup_path, class: "btn btn-lg btn-primary" %>
-  <p>already user? <%= link_to "Log in!", login_path %></p>
+      <%= f.text_field :name, class: 'form-control',
+                       placeholder:"username", style:"margin-bottom: 25px;
+                       margin-left: 55px;
+                       width: 70%;"%>
 
-  <p class="skip">Not now? Click <u><%= link_to "Here", community_path %></u> to enter community!</p>
+      <%= f.password_field :password,
+                           placeholder:"password", class: 'form-control', style:"margin-bottom: 25px;
+                           margin-left: 55px;
+                           width: 70%;" %>
+
+      <%= f.password_field :password_confirmation,
+                           placeholder:"password confirmation", class: 'form-control',style:"margin-bottom: 25px;
+                           margin-left: 55px;
+                           width: 70%;" %>
+
+      <%= f.submit "Get started", class: "btn btn-primary btn-md", style:" margin-left: 55px; width:70%;" %>
+    <% end %>
+    <p style="text-align:center; padding-top:20px;">already a member? Click <%= link_to "here", login_path %> to login.</p>
+  </div>
 </div>
+
+<div class="row" style="width:1155px;margin:auto;">
+
+  <section class="feature_and_posts">
+    <div class="today_feature">
+      <h3 id="featured_h3">Featured today</h3>
+
+    </div>
+
+    <div class="latest_posts">
+      <h3>Latest posts</h3>
+      <%= render 'latest_posts' %>
+    </div>
+  </section>
+
+  <aside class="home_page_aside">
+    <ul>
+      <li class="trending_discussion">
+        <h3>Trending discussions</h3>
+
+      </li>
+      <li class="most_views">
+        <h3>Most views</h3>
+
+      </li>
+    </ul>
+  </aside>
+</div>
+
+
 
 

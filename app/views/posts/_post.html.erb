@@ -18,7 +18,7 @@
         attributes: %w(id name alt src color href style border cellpadding cellspacing class) %>
     </div>
     </div>
-    <span class="read-more">read more</span>
+    <span class="read-more">...read more</span>
   </div>
   <span class="timestamp">
     Posted <%= time_ago_in_words(post.created_at) %> ago by 
@@ -38,32 +38,6 @@
   </section>
 </li>
 
-<script>
-$(document).ready(function(){ 
-  var moretext = "read more";
-  var lesstext = "read less";
 
-  $(".read-more").click(function(){
-     var $elem = $(this).parent().find(".text-body");
-     if($elem.hasClass("short"))
-     {
-       $elem.removeClass("short").addClass("full");
-     }
-      else
-      {
-       $elem.removeClass("full").addClass("short");
 
-      }
-
-   if($(this).hasClass("less")){
-      $(this).removeClass("less");
-      $(this).html(moretext);
-    } else {
-      $(this).addClass("less");
-      $(this).html(lesstext);
-    }
-
-    });
-});
-</script>
 

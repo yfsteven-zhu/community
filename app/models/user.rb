@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   before_save { self.name = name.downcase }
 
-  validates:name, presence: true, length: { minimum:3, maximum:20 }, 
+  validates :name, presence: true, length: { minimum:3, maximum:20 },
                         format: { with:/\A[\w\.\-\@]+\z/, 
                              message: "only allows letter, number, _, - and @" },
                         uniqueness: { case_sensitive: false }
@@ -16,9 +16,6 @@ class User < ApplicationRecord
         message:"minimum length of password is 6"}, 
         format: {with:/\A[\S\d]+\z/, message: "no space allowed"}, allow_nil: true
 
-  validates :security_question, presence: true, length: {minimum: 6}
-
-  validates :security_answer, presence: true, length: {minimum: 2}
 
   mount_uploader :picture, PictureUploader
 

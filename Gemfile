@@ -30,7 +30,14 @@ gem 'elasticsearch-rails'
 
 gem 'elasticsearch-model'
 
+gem 'simple_form'
 
+gem "bootstrap_flash_messages", "~> 1.0.1"
+
+gem 'jquery-ui-rails'
+gem 'jquery-rails'
+
+gem 'impressionist'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

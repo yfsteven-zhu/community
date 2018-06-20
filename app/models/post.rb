@@ -2,8 +2,12 @@ class Post < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  is_impressionable :counter_cache => true
+
   belongs_to :user
-  default_scope -> { order(created_at: :desc) }
+  has_many :comments, as: :commentable, dependent: :destroy
+  scope :recent, -> { order(created_at: :desc) }
+  scope :reply, ->{ order(updated_at: :desc)}
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
   validates :title, presence: true
