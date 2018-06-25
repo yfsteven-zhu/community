@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
   scope :recent, -> { order(created_at: :desc) }
-  scope :reply, ->{ order(updated_at: :desc)}
+  scope :reply, ->{ order(comment_created_at: :desc)}
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
   validates :title, presence: true

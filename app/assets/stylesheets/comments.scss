@@ -3,15 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .comments-widget {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+
   margin-bottom: 1em;
   padding: 1em;
-  box-shadow: 0 10px 6px -6px #777;
+  float: left;
+  width: 800px;
+  border: 1px solid #d6d6d6;
+  box-shadow: 3px 3px 0px #bababa;
+  border-radius: 3px;
+  margin-left: 23px;
+
+  background-color:white;
 }
 
 h2.comments-header {
-  color: rgb(247, 147, 124) !important;
   margin-bottom: 0.3em !important;
 }
 

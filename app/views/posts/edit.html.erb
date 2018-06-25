@@ -1,54 +1,43 @@
 <% provide(:title, "Editing: "+@post.title) %>
-  <div class = "row">
-    <aside class = "col-md-4">
-      <br></br>
-      <section class = "user_info">
-        <%= render 'shared/user_info' %>
-      </section>
-    </aside>
-    <div class = "col-md-8">
-      <h1 class= "edit_post">Edit Post</h1>
-      <hr></hr>
-      <%= form_for(@post, html: {class: "edit_post_form"}) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <div class = "topicfield">
-          <%= f.text_field :title, value: @post.title %>
-        </div>
-        <div class = "content_field">
-          <%= f.cktext_area :content, value: @post.content%>
-        </div>
-        <%= f.submit "Update", class: "btn btn-primary" %>
-      <% end %>
-      <hr></hr> 
-      <div class="text-center">
-        <%= link_to "Back", community_path, class: "btn btn-lg btn-primary btn-sm" %>
+<div class = "row" style="width:1155px;margin:auto;">
+  <nav class="nav_bar">
+    <ul>
+      <li>
+        <%= link_to "Home", root_url %> \&nbsp;
+      </li>
+      <li>
+        <%= link_to "Community", community_path %> \&nbsp;
+      </li>
+      <li>
+        <%= link_to @post.title, @post %> \&nbsp;
+      </li>
+      <li>
+        edit
+      </li>
+    </ul>
+  </nav>
+  <header class="post_header">
+    <h1>Edit</h1>
+  </header>
+  <div class="post_form_body">
+    <%= form_for(@post, html: {class: "edit_post_form"}) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class = "topic_field">
+        <%= f.text_field :title, value: @post.title %>
       </div>
-    </div>
+      <div class = "content_field">
+        <%= f.cktext_area :content, value: @post.content%>
+      </div>
+
+      <%= f.submit "Update", class: "btn btn-primary", style:"float:left; width: 150px;margin-left: 81px;"%>
+      <div>
+        <%= link_to "Back", :back, class: "btn btn-default", style:"float:left; width: 150px; margin-left:30px;" %>
+      </div>
+    <% end %>
   </div>
+</div>
 
 
-<script type="text/javascript">
-  $('#post_picture').bind('change', function(){
-     var size_in_megabytes = this.files[0].size/1024/1024;
-     if (size_in_megabytes > 5) {
-        alert('Maximum file size is 5MB. Please choose a smaller file.');
-     }
-  });
-</script>
 
-<script>
-  function readURL(input) {
-    if (input.files&& input.files[0]) {
-       var reader = new FileReader();
-
-       reader.onload = function (e) {
-       $('#img_prev')
-          .attr('src', e.target.result)
-          .height(150);
-        };
-
-       reader.readAsDataURL(input.files[0]);
-     }
-   }
-</script>
  

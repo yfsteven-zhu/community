@@ -1,27 +1,39 @@
 <% provide(:title, "Post New Topic") %>
-  <div class = "row">
-    <aside class = "col-md-4">
-      <br></br>
-      <section class = "user_info">
-        <%= render 'shared/user_info' %>
-      </section>
-    </aside>
-    <div class = "col-md-8">
-      <h1 class= "edit_post">Post</h1>
-      <hr></hr>
+  <div class = "row" style="width:1155px;margin:auto;">
+    <nav class="nav_bar">
+      <ul>
+        <li>
+          <%= link_to "Home", root_url %> \&nbsp;
+        </li>
+        <li>
+          <%= link_to "Community", community_path %> \&nbsp;
+        </li>
+        <li>
+          Create a new post
+        </li>
+      </ul>
+    </nav>
+    <header class="post_header">
+      <h1>New post</h1>
+    </header>
+      <div class="post_form_body">
       <%= form_for(@post, html: {class: "post_new_form"}) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        <div class = "topicfield">
-          <%= f.text_field :title %>
+
+        <div class = "topic_field">
+          <%= f.text_field :title, placeholder:"    title..." %>
         </div>
         <div class = "content_field">
           <%= f.cktext_area :content%>
         </div>
-        <%= f.submit "Post", class: "btn btn-primary" %>
-      <% end %>
-      <hr></hr> 
-      <div class="text-center">
-        <%= link_to "Back", community_path, class: "btn btn-lg btn-primary btn-sm" %>
+
+          <%= f.submit "Post", class: "btn btn-primary", style:"float:left; width: 150px;margin-left: 81px;"%>
+          <div>
+            <%= link_to "Back", :back, class: "btn btn-default", style:"float:left; width: 150px; margin-left:30px;" %>
+          </div>
+
+        <% end %>
       </div>
-    </div>
+
+
   </div>

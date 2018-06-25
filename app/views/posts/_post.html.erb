@@ -1,40 +1,55 @@
 <li id="post-<%= post.id%>" class="post_li">
   <aside class="avatar_img">
   <% if post.user.picture?%>
-    <%= image_tag post.user.picture.url %>
+    <%= image_tag post.user.picture.url class:"img-circle" %>
   <% else %>
-    <%= image_tag ('default.jpg') %>
+    <%= image_tag ('default.jpg'), class:"img-circle" %>
   <% end %>
   </aside>
   <section class="post_body">
   <span class="title">
     <%= sanitize link_to (raw(post.title)), post %>
   </span>
+
+    <span class="timestamp">
+    Posted by
+      <%= sanitize link_to post.user.name, post.user, target: :_blank %>
+      <%= time_ago_in_words(post.created_at) %> ago
+
+  </span>
+
   <div class="article">
     <div class="text-body short">
     <div class="text">
        <%= sanitize post.content, 
-        tags:%w(p table tbody tr td u s em blockquote ol ul li strong sub sup span hr img a object br ),
+        tags:%w(p i b table tbody tr td u s em blockquote ol ul li strong sub sup span hr img a object br ),
         attributes: %w(id name alt src color href style border cellpadding cellspacing class) %>
     </div>
     </div>
     <span class="read-more">...read more</span>
   </div>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(post.created_at) %> ago by 
-    <%= sanitize link_to post.user.name, post.user, target: :_blank %>
-    <% if current_user && current_user.admin? %>    
+
+    <span class="post_info">
+      <div class="post_info_view">
+      <%=image_tag ("view-icon.png"), size:"20x18", style:"margin-top:-3px;margin-right:8px;" %><%=post.impressionist_count %>
+      </div>
+      <div class="post_info_comment">
+      <%=image_tag ("comment_icon.png"),size:"15x15", style:"margin-right:10px;" %>
+        <%= link_to post.comments.size ,post_path(post,anchor: 'comments_header')  %>
+      </div>
+      <% if current_user && current_user.admin? %>
       <%= link_to "delete", post, method: :delete,
-                                     data: { confirm: "You sure?" }, class:"deletebtn" %>
-      <%= link_to "edit", edit_post_path(post), class:"editbtn" %>
+                  data: { confirm: "You sure?" }, class:"deletebtn" %>
+        <%= link_to "edit", edit_post_path(post), class:"editbtn" %>
     <% end %>
-    <% if current_user?(post.user)&&!current_user.admin? %>
+      <% if current_user?(post.user)&&!current_user.admin? %>
       <%= link_to "delete", post, method: :delete,
-                                     data: { confirm: "You sure?" }, class:"deletebtn" %>      
-      <%= link_to "edit", edit_post_path(post), class:"editbtn" %>
+                  data: { confirm: "You sure?" }, class:"deletebtn" %>
+        <%= link_to "edit", edit_post_path(post), class:"editbtn" %>
 
     <% end %>
-  </span>
+    </span>
+
   </section>
 </li>
 

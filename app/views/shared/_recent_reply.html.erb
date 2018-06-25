@@ -1,0 +1,19 @@
+<% @recent_reply.each.with_index(1) do |post,index| %>
+<div class="recent_reply_content">
+  <aside class="index">
+    <span>
+      0<%= index %>
+    </span>
+  </aside>
+  <ul class="recent_reply_ul">
+    <li id="recent_reply-<%= post.id%>" class="recent_reply_li">
+      <div class="recent_reply_title">
+        <%= sanitize link_to (raw(post.title)), post, class:"reply_title"%>
+        <br>
+        <%=image_tag ("comment_icon.png"),size:"15x15", style:"margin-right:10px;" %>
+        <%= link_to post.comments.size ,post_path(post,anchor: 'comments_header'),class:"reply_count"  %>
+      </div>
+    </li>
+  </ul>
+</div>
+<% end %>

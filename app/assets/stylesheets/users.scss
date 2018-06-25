@@ -130,30 +130,20 @@ input {
   }
 }
 
-.postbtn {
-  width: 100px;
-  height:40px;
-  float: right;
-  margin-right: 30px;
-  font-size: 18px;
-  margin-top: -10px;
-  background-color: #5e5f61;
-}
 
 .editbtn {
   float:right;
-  margin-right:10px;
+  margin-right:14px;
+  padding-left: 14px;
+  border-left: 1px solid #e8e8e8;
+  border-right: 1px solid #e8e8e8;
+  padding-right:15px;
 }
 
 .deletebtn {
+
   float:right;
   margin-right:33px;
-}
-
-.search-form {
-  text-align: center;
-  height: 40px;
-  margin-top: 30px;
 }
 
 #q {

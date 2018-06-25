@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [ :reply, :edit, :update, :destroy ]
 
   after_action do
-    @commentable.update_attribute(:updated_at, Time.now)
+    @commentable.update_attribute(:comment_create_at, Time.now)
   end
 
   def reply

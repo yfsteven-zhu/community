@@ -1,3 +1,15 @@
+<% provide(:title, "Search") %>
+<div class="row"  style="width:1155px;margin:auto;">
+  <nav class="nav_bar">
+    <ul>
+      <li>
+        <%= link_to "Home", root_url %> \&nbsp;
+      </li>
+      <li>
+        Search
+      </li>
+    </ul>
+  </nav>
 <%= form_for search_path, method: :get do |f| %>
   <div class="search-form">
     <%= f.label "Search for" %>
@@ -6,9 +18,9 @@
   </div>
 <% end %>
 
-<ul>
+<ul class="search_result">
   <% @posts.each do |post| %>
-    <li>
+    <li class="search_result_li">
       <h3>
         <%= sanitize link_to post.try(:highlight).try(:title)? post.highlight.title[0].html_safe : post.title,controller: "posts", action: "show", id: post._id%>
       </h3>
@@ -23,3 +35,4 @@
       </li>
   <% end %>
 </ul>
+</div>

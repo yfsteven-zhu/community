@@ -1,47 +1,70 @@
 <% provide(:title, @post.title) %>
-<% if logged_in? %>
-  <div class = "row">
-    <aside class = "col-md-4">
-      
-    </aside>
-    <div class = "col-md-8">
-      <div class="postbody">
-        <h2><%= sanitize @post.title %></h2>
-        <h5>Author: <%= sanitize link_to @post.user.name, @post.user %>,
-                posted <%=time_ago_in_words(@post.created_at) %></h5>
-        <hr></hr>     
-        <p><%= sanitize @post.content, 
-             tags:%w(p table tbody tr td u s em blockquote ol ul li strong sub sup span hr img a object br ),
-                attributes: %w(id name alt src color href style border cellpadding cellspacing class) %></p>
-        <hr></hr>
-        <div class="text-center">
-          <%= link_to "Back", community_path, class: "btn btn-lg btn-primary btn-sm" %>
-        </div>
-      </div>
+<div class = "row" style="width:1155px;margin:auto;">
+  <nav class="nav_bar">
+    <ul>
+      <li>
+        <%= link_to "Home", root_url %> \&nbsp;
+      </li>
+      <li>
+        <%= link_to "Community", community_path %> \&nbsp;
+      </li>
+      <li>
+        <%= @post.title %>
+      </li>
+    </ul>
+  </nav>
+
+  <header class="post_show_header">
+    <h1><%= @post.title %></h1>
+  </header>
+  <div style="float: left;width: 823px;">
+  <div class="post_show_body">
+    <div class="post_show_body_info">
+      <aside>
+        <% if @post.user.picture?%>
+          <%= image_tag @post.user.picture.url class:"img-circle" %>
+        <% else %>
+          <%= image_tag ('default.jpg'), class:"img-circle" %>
+        <% end %>
+      </aside>
+      <span class="post_show_body_timestamp">
+        <%= sanitize link_to @post.user.name, @post.user %> &bull;
+        <%= localize(@post.created_at, format: :long) %>
+      </span>
+    </div>
+
+    <div class="post_show_body_content">
+      <p><%= sanitize @post.content,
+                      tags:%w(p i b table tbody tr td u s em blockquote ol ul li strong sub sup span hr img a object br ),
+                      attributes: %w(id name alt src color href style border cellpadding cellspacing class) %></p>
     </div>
   </div>
-<% else %>
-  <div class = "row">
-    <aside class = "col-md-4">
-    </aside>
-    <div class = "col-md-8">
-      <div class="postbody">
-        <h2><%= @post.title %></h2>
-        <h5>Author: <%=sanitize link_to @post.user.name, @post.user %>,
-                posted <%=time_ago_in_words(@post.created_at) %></h5>
-        <hr></hr> 
-          
-        <p><%= sanitize @post.content, 
-             tags:%w(p table tbody tr td u s em blockquote ol ul li strong sub sup span hr img a object br ),
-                attributes: %w(id name alt src color href style border cellpadding cellspacing class) %></p>
-        <hr></hr>
-        <div class="text-center">
-          <%= link_to "Back", community_path, class: "btn btn-lg btn-primary btn-sm" %>
-        </div>
-      </div>
-    </div>
+    <%= render "comments/widget", commentable: @post %>
   </div>
-<% end %>
+  <aside class="post_aside">
+    <ul>
+      <li class="post_user_info">
+        <div class="post_user_info_avatar">
+          <% if @post.user.picture?%>
+            <%= image_tag @post.user.picture.url class:"img-circle" %>
+          <% else %>
+            <%= image_tag ('default.jpg'), class:"img-circle" %>
+          <% end %>
+        </div>
+        <div class="post_user_info_user">
+          <h4><%= sanitize link_to @post.user.name, @post.user %></h4>
+        </div>
+      </li>
+      <li class="trending_discussion">
+        <h3>Trending discussions</h3>
+        <%= render 'shared/trending_topic' %>
+      </li>
+      <li class="recent_reply">
+        <h3>Recent replies</h3>
+        <%= render 'shared/recent_reply' %>
+      </li>
+    </ul>
 
+  </aside>
 
-<%= render "comments/widget", commentable: @post %>
+</div>

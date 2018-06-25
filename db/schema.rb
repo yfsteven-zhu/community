@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_20_022948) do
+ActiveRecord::Schema.define(version: 2018_06_25_074639) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2018_06_20_022948) do
     t.datetime "updated_at", null: false
     t.string "picture"
     t.integer "impressions_count"
+    t.datetime "comment_create_at"
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

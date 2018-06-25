@@ -1,0 +1,21 @@
+<% @trending.each.with_index(1) do |trending,index|%>
+
+
+  <div class="trending_content">
+    <aside class="index">
+    <span>
+      0<%= index %>
+    </span>
+    </aside>
+    <ul class="trending_ul">
+      <li id="trending-<%= trending.id%>" class="trending_li">
+        <div class="trending_title">
+          <%= sanitize link_to (raw(trending.title)), trending, class:"t_title"%>
+          <br>
+          <%=image_tag ("comment_icon.png"),size:"15x15", style:"margin-right:10px;" %>
+          <%= link_to trending.comments.size ,post_path(trending,anchor: 'comments_header'),class:"t_count"  %>
+        </div>
+      </li>
+    </ul>
+  </div>
+<% end %>
