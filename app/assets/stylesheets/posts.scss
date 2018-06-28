@@ -2,6 +2,65 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* sign_up page*/
+.signup_header{
+  text-align:center;
+  float: left;
+  width: 100%;
+  h1{
+    font-size: 26px;
+    float:left;
+    line-height: 1.2;
+    padding: 0 23px 35px;
+    margin-top: 35px;
+    display: inline-block;
+    width: 100%;
+    font-weight:bold;
+  }
+}
+
+.signup_form{
+  float: left;
+  width: 100%;
+  .label-control{
+    margin-left: 402px;
+  }
+
+  .field-control{
+    margin-left: 402px;
+    width: 350px;
+  }
+
+  p{
+    text-align: center;
+    margin-bottom:130px;
+  }
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+    li{
+      margin-left:402px;
+    }
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .field-control {
+    color: $state-danger-text;
+    border: solid 1px $state-danger-text;
+  }
+}
+
+
+/* post */
 .postbody{
    p {
      text-indent: 0px;
@@ -93,6 +152,10 @@
     width: 145px !important;
     height: auto !important;
    }
+
+  ul{
+    list-style-type: initial;
+  }
 }
 
 
@@ -121,6 +184,9 @@
   .post_info_comment{
     float:left;
     padding-right:15px;
+    a{
+      color:black;
+    }
   }
 }
 
@@ -165,9 +231,10 @@
     .post_show_body_timestamp{
       color: #a7a7a7;
       display: block;
-      margin-top: 33px;
+      margin-top: 30px;
       float: left;
-      margin-left:20px;
+      margin-left: 20px;
+      font-size: 20px;
     }
   }
 
@@ -319,3 +386,4 @@
     }
   }
 }
+

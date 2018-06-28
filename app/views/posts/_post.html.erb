@@ -1,9 +1,9 @@
 <li id="post-<%= post.id%>" class="post_li">
   <aside class="avatar_img">
   <% if post.user.picture?%>
-    <%= image_tag post.user.picture.url class:"img-circle" %>
+    <%= link_to (image_tag post.user.picture.url class:"img-circle"), post.user %>
   <% else %>
-    <%= image_tag ('default.jpg'), class:"img-circle" %>
+    <%= link_to (image_tag ('default.jpg'), class:"img-circle"),post.user %>
   <% end %>
   </aside>
   <section class="post_body">
@@ -21,9 +21,9 @@
   <div class="article">
     <div class="text-body short">
     <div class="text">
-       <%= sanitize post.content, 
-        tags:%w(p i b table tbody tr td u s em blockquote ol ul li strong sub sup span hr img a object br ),
-        attributes: %w(id name alt src color href style border cellpadding cellspacing class) %>
+       <%= sanitize post.content ,
+                    tags:%w(p i b table tbody tr td u s em blockquote ol ul li strong sub sup span hr img a object br ),
+                    attributes: %w(id name alt src color href style border cellpadding cellspacing class) %>
     </div>
     </div>
     <span class="read-more">...read more</span>
@@ -34,7 +34,7 @@
       <%=image_tag ("view-icon.png"), size:"20x18", style:"margin-top:-3px;margin-right:8px;" %><%=post.impressionist_count %>
       </div>
       <div class="post_info_comment">
-      <%=image_tag ("comment_icon.png"),size:"15x15", style:"margin-right:10px;" %>
+      <%=link_to (image_tag ("comment_icon.png"),size:"15x15", style:"margin-right:10px;"),post_path(post,anchor: 'comments_header') %>
         <%= link_to post.comments.size ,post_path(post,anchor: 'comments_header')  %>
       </div>
       <% if current_user && current_user.admin? %>

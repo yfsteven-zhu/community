@@ -1,10 +1,13 @@
+
 <div id="comments-widget-of-commentable-<%= commentable.id %>" class="comments-widget">
   <h2 class="comments-header" id="comments_header">
-    Comments <%= commentable.comments.size %>
+    Comments <nobr id="comments-count-of-commentable-<%= commentable.id %>"><%= commentable.comments.size %></nobr>
   </h2>
+  <div class="comment-individual">
   <ul class="comments-list">
     <%= render commentable.comments.where(parent: nil) %>
   </ul>
+  </div>
   <!-- comment-form -->
   <%= render "comments/form", comment: commentable.comments.build  %>
 </div>

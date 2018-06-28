@@ -41,7 +41,8 @@ class UsersController < ApplicationController
                                      :password_confirmation,
                                      :security_question,
                                      :security_answer,
-                                     :picture)
+                                     :picture,
+                                     :introduction)
     end
 
     #confirm a logged-in user

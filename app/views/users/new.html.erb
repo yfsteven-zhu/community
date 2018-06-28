@@ -1,27 +1,33 @@
 <% provide(:title, 'Sign up' ) %>
+<div class="row"  style="width:1155px;margin:auto;">
+  <nav class="nav_bar">
+    <ul>
+      <li>
+        <%= link_to "Home", root_url %> \&nbsp;
+      </li>
+      <li>
+        Sign up
+      </li>
+    </ul>
+  </nav>
 
-<br></br>
-<h1 class=user_h1>Sign up</h1>
-<br></br>
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
+  <header class="signup_header">
+    <h1>Sign up</h1>
+  </header>
+  <div class="signup_form">
     <%= form_for @user, url:signup_path do |f|  %>
-       <%= render 'shared/error_messages', object: f.object %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-       <%= f.label :name, "User Name" %>
-       <%= f.text_field :name, class: 'form-control', 
-                       placeholder:"only allows letter, number, _, - and @" %>
-   
-       <%= f.label :password %>
-       <%= f.password_field :password,
-           placeholder:"minimum length: 6, no space allowed", class: 'form-control' %>
-  
-       <%= f.label :password_confirmation, "Confirm Password" %>
-       <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= f.label :name, "User Name", class:'label-control' %>
+      <%= f.text_field :name, class:'field-control' %>
+      <%= f.label :password, "Password", class:'label-control'%>
+      <%= f.password_field :password, class:'field-control' %>
+      <%= f.label :password_confirmation, "Confirm Password", class:'label-control' %>
+      <%= f.password_field :password_confirmation, class: 'field-control' %>
 
-       <br></br>
-       <%= f.submit "Join now", class: "btn btn-primary btn-md" %>
+      <%= f.submit "Get started", class: "btn btn-primary btn-md", style:"width:350px; margin-left:402px;
+                                                                          margin-top:20px; margin-bottom:15px;" %>
     <% end %>
-    <p>already user? <%= link_to "Log in!", login_path %></p>
+    <p>already a member? Click <%= link_to "here", login_path %> to login.</p>
   </div>
 </div>

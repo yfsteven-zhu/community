@@ -1,19 +1,40 @@
 <li id="comment_<%= comment.id %>" class="comment">
-  <div class="comment-content">
-    <%= comment.content %>
-  </div>
-  <div class="comment-info">
-    <small>-
-      <%= comment.user.name %> &bull;
-      <%= localize(comment.created_at, format: :long) %> &bull;
-      <%= link_to "Edit", edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true  %> &bull;
-      <%= link_to "Destroy", [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %> &bull;
-      <%= link_to "Reply", polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true  %>
-    </small>
-  </div>
+
+  <section class="comments-body">
+
+    <aside class="avatar_img">
+      <% if comment.user.picture?%>
+        <%= link_to (image_tag post.user.picture.url class:"img-circle"), comment.user %>
+      <% else %>
+        <%= link_to (image_tag ('default.jpg'), class:"img-circle"), comment.user %>
+      <% end %>
+    </aside>
+
+    <span class="comment-info">
+        <%= sanitize link_to comment.user.name, comment.user %> &bull;
+        <%= localize(comment.created_at, format: :long) %>
+    </span>
+
+    <div class="comment-content">
+      <%= sanitize comment.content %>
+    </div>
+    <div class="comment-menu">
+      <% if current_user&.admin? %>
+        <%= link_to "EDIT", edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true  %> &bull;
+        <%= link_to "DELETE", [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %> &bull;
+      <% end %>
+      <% if current_user?(comment.user)&&!current_user.admin? %>
+        <%= link_to "EDIT", edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true  %> &bull;
+        <%= link_to "DELETE", [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %> &bull;
+      <% end %>
+      <%= link_to "REPLY", polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true  %>
+
+    </div>
+  </section>
+
+</li>
   <% if comment.replies.any? %>
-    <ul>
+    <ul style="padding-left:15px;">
       <%= render comment.replies %>
     </ul>
   <% end %>
-</li>

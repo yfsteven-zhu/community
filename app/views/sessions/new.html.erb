@@ -1,30 +1,39 @@
 <% provide(:title, 'Log in') %>
+<div class="row"  style="width:1155px;margin:auto;">
+  <nav class="nav_bar">
+    <ul>
+      <li>
+        <%= link_to "Home", root_url %> \&nbsp;
+      </li>
+      <li>
+        Log in
+      </li>
+    </ul>
+  </nav>
 
-<br></br>
-<h1 class="session_h1"> Log in</h1>
-<br></br>
+  <header class="login_header">
+    <h1>Log in</h1>
+  </header>
 
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <%= form_for(:session, url: login_path) do |f| %>
-   
-      <%= f.label :name, "User Name" %>
-      <%= f.text_field :name, class: 'form-control' %>
-    
-      <%= f.label :password %>
-      <%= link_to "(forgot password?)", new_user_reset_path %>
-      <%= f.password_field :password, class: 'form-control' %>
+  <div class="login_form">
+    <%= form_for(:session, url: login_path) do |f|  %>
+      <% if flash[:login_danger].present? %>
+        <% flash.each do |message_type, message| %>
+          <div class = "alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+      <% end %>
 
+      <%= f.label :name, "User Name", class:'label-control' %>
+      <%= f.text_field :name, class:'field-control' %>
+      <%= f.label :password, "Password", class:'label-control'%>
+      <%= f.password_field :password, class:'field-control' %>
       <%= f.label :remember_me, class: "checkbox inline" do %>
         <%= f.check_box :remember_me %>
         <span>Remember me</span>
-      <% end %>
-
-      <br></br>
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+        <% end %>
+      <%= f.submit "Log in", class: "btn btn-primary btn-md", style:"width:350px; margin-left:402px; margin-bottom:130px;
+                                                                          margin-top:5px;" %>
     <% end %>
 
-
-    <p class="new_user_p">New user? <%= link_to "Join now!", signup_path %>
   </div>
 </div>

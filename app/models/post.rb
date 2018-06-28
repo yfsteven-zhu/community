@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
   scope :recent, -> { order(created_at: :desc) }
-  scope :reply, ->{ order(comment_created_at: :desc)}
+  scope :reply, ->{ order(comment_create_at: :desc)}
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
   validates :title, presence: true
@@ -46,7 +46,7 @@ class Post < ApplicationRecord
     end
 
     def high_light(query) {
-      pre_tags: ['<em>'],
+      pre_tags: ['<em class="search_em">'],
       post_tags: ['</em>'],
       fields: {
         title: {},

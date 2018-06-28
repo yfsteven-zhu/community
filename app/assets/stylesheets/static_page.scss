@@ -336,12 +336,38 @@ ul{
 .community_header{
   h1{
     font-size: 26px;
+    float:left;
     line-height: 1.2;
     padding: 0 23px 35px;
     margin-top: 35px;
     display: inline-block;
-    width: 100%;
+    width: 400px;
     font-weight:bold;
+  }
+  #sort_dropdown{
+    float: left;
+    margin-top: 70px;
+    margin-left: -390px;
+
+    #sort-menu{
+      width: auto;
+    }
+
+    a{
+      float: left;
+      li{
+        width:100%;
+      }
+    }
+      .active-tick a::after {
+        content: '\f00c'; /* http://fontawesome.io/3.2.1/icon/ok/ */
+        font-family: 'FontAwesome';
+        //float: right;
+        margin-left:5px;
+      }
+
+
+
   }
 }
 
@@ -361,7 +387,6 @@ ul{
   margin: 0 0 15px 30px;
   ul{
     padding-left:0px;
-    text-align:center;
     .post_new_topic{
       list-style:none;
       width:100%;
@@ -371,7 +396,6 @@ ul{
     }
     .trending_discussion{
       width: 300px;
-      height:400px;
       list-style: none;
       position: relative;
       margin-top: 20px;
@@ -380,6 +404,43 @@ ul{
       border: 1px solid #d6d6d6;
       box-shadow: 3px 3px 0px #bababa;
       border-radius: 3px;
+
+      h3{
+        margin-left: 20px;
+      }
+      .trending_content{
+        float:left;
+        width:100%;
+        margin-bottom:10px;
+        .index{
+          float: left;
+          width:16.7%;
+          span{
+            font-size: 20px;
+            color: #c5cbe5;
+            padding-left:20px;
+          }
+        }
+        .trending_ul{
+          float:left;
+          width:83.3%;
+          .trending_li{
+            list-style-type: none;
+            font-size: 16px;
+            float: left;
+            margin-left: 20px;
+            .trending_title{
+              padding-right:10px;
+              .t_title{
+                color:black;
+              }
+              .t_count{
+                color: #c5cbe5;
+              }
+            }
+          }
+        }
+      }
 
     }
   }
@@ -408,6 +469,9 @@ ul{
   .search_result_li{
     padding-bottom: 20px;
     border-bottom: 1px solid rgba(0,0,0,.15);
+    .search_em {
+      background: yellow;
+    }
   }
 }
 

@@ -1,30 +1,82 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_profile">
-        <p class="p2"><strong><%= @user.name %></strong></p>
-        <div class="profile_img">
-        <% if @user.picture? %>
-          <%= image_tag @user.picture.url %>
-        <% else %>
-          <%= image_tag ('default.jpg')%>
-        <% end %>
-        </div>
-        <div class="posts_profile">
-          Has <%= pluralize(@user.posts.count, "post") %><br>
-          Has joined <%= time_ago_in_words(@user.created_at) %>
+<div class="row"  style="width:1155px;margin:auto;">
+  <nav class="nav_bar">
+    <ul>
+      <li>
+        <%= link_to "Home", root_url %> \&nbsp;
+      </li>
+      <li>
+        Personal profile
+      </li>
+    </ul>
+  </nav>
 
+  <div class="user_profile">
+    <div class="user_profile_avatar">
+      <% if @user.picture? %>
+        <%= image_tag @user.picture.url class:"img-circle" %>
+      <% else %>
+        <%= image_tag ('default.jpg'), class:"img-circle"%>
+      <% end %>
+    </div>
+    <div class="user_profile_name">
+      <p> <%= @user.name %></p>
+    </div>
+    <div class="follow_button">
+      <% if logged_in? %>
+        <%= render 'follow_form' %>
+        <% else %>
+        <%= link_to "+ Follow", login_path, class:"btn follow-btn", data:{confirm:"You need to log in first!"} %>
+        <% end %>
+    </div>
+    <div class="user_profile_intro">
+      <% if current_user?(@user) %>
+        <%=image_tag ("edit_icon.png"), size:"20x18", class:"edit-intro-btn" %>
+        <% end %>
+      <% if @user.introduction? %>
+        <div class="user_profile_intro_content">
+          <div id="introduction"><%= simple_format(@user.introduction) %></div>
         </div>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <h3>have posted</h3>
-    <% if @user.posts.any? %>
-      <ol class="posts">
-        <%= render @posts %>
-      </ol>
-      <%= will_paginate @posts %>
-    <% end %>
+      <% else %>
+      <div class="user_profile_intro_content">
+        <div id="introduction">No description yet :( </div>
+      </div>
+      <% end %>
+    </div>
+    <div>
+      <%= form_for(@user) do |f|%>
+      <%= f.text_area :introduction, maxlength:150, class:"intro-control" %>
+        <%= f.submit "submit", class:"intro-control-submit"%>
+        <% end %>
+      <button id="user_profile_cancel_btn">
+        close
+      </button>
+    </div>
+
   </div>
 </div>
 
+<script>
+    document.addEventListener("turbolinks:load", function(){
+        var intro= document.getElementById("introduction");
+        var intro_form= document.getElementsByClassName("intro-control")[0];
+        var intro_submit = document.getElementsByClassName("intro-control-submit")[0];
+        var intro_cancel = document.getElementById("user_profile_cancel_btn");
+
+        $('.edit-intro-btn').click(function(){
+            intro.style.display="none";
+            intro_form.style.display="block";
+            intro_submit.style.display="block";
+            intro_cancel.style.display="block";
+        });
+
+        $('#user_profile_cancel_btn').click(function(){
+            intro.style.display="block";
+            intro_form.style.display="none";
+            intro_submit.style.display="none";
+            intro_cancel.style.display="none";
+
+            });
+
+    });
+</script>

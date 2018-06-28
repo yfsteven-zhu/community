@@ -18,13 +18,6 @@ $(document).on "click", '.cancel-comment-link', (e) ->
   $edit_link.href = "#{$restore_link.href}/edit"
   $form.remove()
 
-$(document).on 'keyup', '.comment_content textarea', (e) ->
-  comment_id = $(this).data('comment-id')
-  counter = $("#comment_#{comment_id}_chars_counter")
-  charsRemaining = 255 - ($(this).val().length)
-  counter.text "Remaining : #{charsRemaining}"
-  counter.css 'color', if charsRemaining < 0 then 'red' else '#818a91'
-  return
 
 # Handle 401 error on ajax call.
 $(document).ajaxError (_, xhr)->
