@@ -12,6 +12,7 @@
   </nav>
 
   <div class="user_profile">
+    <div class="user_profile_left">
     <div class="user_profile_avatar">
       <% if @user.picture? %>
         <%= image_tag @user.picture.url class:"img-circle" %>
@@ -19,20 +20,25 @@
         <%= image_tag ('default.jpg'), class:"img-circle"%>
       <% end %>
     </div>
+    </div>
+
+    <div class="user_profile_middle">
     <div class="user_profile_name">
       <p> <%= @user.name %></p>
     </div>
-    <div class="follow_button">
-      <% if logged_in? %>
-        <%= render 'follow_form' %>
+      <div class="follow_button">
+        <% if logged_in? %>
+          <%= render 'follow_form' %>
         <% else %>
-        <%= link_to "+ Follow", login_path, class:"btn follow-btn", data:{confirm:"You need to log in first!"} %>
+          <%= link_to "+ Follow", login_path, class:"btn follow-btn", data:{confirm:"You need to log in first!"} %>
         <% end %>
-    </div>
-    <div class="user_profile_intro">
+      </div>
       <% if current_user?(@user) %>
-        <%=image_tag ("edit_icon.png"), size:"20x18", class:"edit-intro-btn" %>
-        <% end %>
+        <div class="edit_button">
+          <%=image_tag ("edit_icon.png"), size:"20x18", class:"edit-intro-btn" %>
+        </div>
+      <% end %>
+    <div class="user_profile_intro">
       <% if @user.introduction? %>
         <div class="user_profile_intro_content">
           <div id="introduction"><%= simple_format(@user.introduction) %></div>
@@ -43,15 +49,38 @@
       </div>
       <% end %>
     </div>
-    <div>
+    <div style="float: left;width: 600px;">
       <%= form_for(@user) do |f|%>
-      <%= f.text_area :introduction, maxlength:150, class:"intro-control" %>
+      <%= f.text_area :introduction, maxlength:75, class:"intro-control" %>
         <%= f.submit "submit", class:"intro-control-submit"%>
         <% end %>
       <button id="user_profile_cancel_btn">
         close
       </button>
     </div>
+    </div>
+    <div class="user_profile_right">
+      <div class="user_profile_join">
+        Joined<br>
+        <%= @user.created_at.strftime("%B %d, %Y") %>
+      </div>
+      <div class="user_profile_stat">
+        <%= render 'shared/stats'%>
+      </div>
+    </div>
+  </div>
+
+  <div class="user_nav_col">
+    <ul class="user_nav_col_ul">
+      <li class="user_nav_col_li" id="overview"><%= link_to "Overview", overview_users_path, remote: true %></li>
+      <li class="user_nav_col_li" id="viewpost">Posts</li>
+      <li class="user_nav_col_li" id="viewcomment">Comments</li>
+      <li class="user_nav_col_li" id="viewfollower">Followings</li>
+      <li class="user_nav_col_li" id="viewfollowed">Followers</li>
+    </ul>
+  </div>
+
+  <div class="user_body">
 
   </div>
 </div>

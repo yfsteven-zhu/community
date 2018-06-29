@@ -13,7 +13,7 @@
     </p>
     <%= link_to "Explore our community &nbsp;&nbsp;&nbsp;&nbsp;>".html_safe, community_path, class: "btn btn-md btn-primary" %>
   </div>
-
+  <% if !logged_in? %>
   <div class="home_page_signup">
     <h1 class="home_page_signup_h1">Join Today!</h1>
     <%= form_for @user, url:signup_path do |f|  %>
@@ -38,6 +38,7 @@
     <% end %>
     <p style="text-align:center; padding-top:20px;">already a member? Click <%= link_to "here", login_path %> to login.</p>
   </div>
+    <% end %>
 </div>
 
 <div class="row" style="width:1155px;margin:auto;">

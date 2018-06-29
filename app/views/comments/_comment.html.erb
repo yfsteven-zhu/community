@@ -27,8 +27,11 @@
         <%= link_to "EDIT", edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true  %> &bull;
         <%= link_to "DELETE", [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %> &bull;
       <% end %>
+      <% if logged_in? %>
       <%= link_to "REPLY", polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true  %>
-
+      <% else %>
+      <%= link_to "REPLY", login_path, data:{confirm:"You need to log in first!"} ,class: 'reply-comment-link' %>
+      <% end %>
     </div>
   </section>
 

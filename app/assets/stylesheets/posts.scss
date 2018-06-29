@@ -284,6 +284,40 @@
           color:black;
         }
       }
+      .follow_button{
+        width: 100%;
+        float: left;
+        text-align: center;
+        //margin-left: -190px;
+        //margin-top: 170px;
+
+        .follow-btn{
+          background-color:  #87ceeb40;
+          border:solid 1px rgba(42,119,203,0.5);
+          color:#2a77cb;
+          font-size: 16px;
+          border-radius: 1000px;
+          width: 115.297px;
+        }
+        #follow_form{
+          .follow-btn{
+            width: 115.297px;
+            background-color:  #87ceeb40;
+            border:solid 1px rgba(42,119,203,0.5);
+            color:#2a77cb;
+            font-size: 16px;
+            border-radius: 1000px;
+          }
+          .unfollow-btn{
+            background-color: #f5040452;
+            border: solid 1px #f7050578;
+            font-size: 16px;
+            border-radius: 1000px;
+            color: white;
+            width: 115.297px;
+          }
+        }
+      }
 
     }
     .trending_discussion{

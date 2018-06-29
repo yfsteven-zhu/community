@@ -167,115 +167,184 @@ input {
   border: 1px solid #d6d6d6;
   box-shadow: 3px 3px 0px #828080;
   border-radius: 3px;
-  .user_profile_avatar{
+
+  .user_profile_left{
     float: left;
-    img {
+    width: 343px;
+    .user_profile_avatar{
       float: left;
-      width: 178px !important;
-      height: auto !important;
-      margin-left: 100px;
-      margin-top: 30px;
-      margin-bottom: 30px;
+      width: 100%;
+      img {
+        float: left;
+        width: 178px !important;
+        height: auto !important;
+        margin-left: 100px;
+        margin-top: 60px;
+        margin-bottom: 30px;
+      }
     }
   }
 
-
-  .user_profile_name{
-    float: left;
-    margin-top: 70px;
-    font-size: 65px;
-    font-weight: bold;
-    margin-left: 60px;
-  }
-
-  .follow_button{
-    width: 10%;
-    float: left;
-    margin-left: -190px;
-    margin-top: 170px;
-
-    .follow-btn{
-      background-color:  #87ceeb40;
-      border:solid 1px rgba(42,119,203,0.5);
-      color:#2a77cb;
-      font-size: 16px;
-      border-radius: 1000px;
-      width: 115.297px;
+  .user_profile_middle{
+    float:left;
+    width: 610px;
+    .user_profile_name{
+      float: left;
+      width: 100%;
+      margin-top: 60px;
+      font-size: 65px;
+      font-weight: bold;
+      //margin-left: 60px;
     }
-    #follow_form{
+
+    .follow_button{
+      width: 100%;
+      float: left;
+      //margin-left: -190px;
+      //margin-top: 170px;
+
       .follow-btn{
-
         background-color:  #87ceeb40;
         border:solid 1px rgba(42,119,203,0.5);
         color:#2a77cb;
         font-size: 16px;
         border-radius: 1000px;
+        width: 115.297px;
       }
-      .unfollow-btn{
-        background-color: #f5040452;
-        border: solid 1px #f7050578;
-        font-size: 16px;
-        border-radius: 1000px;
-        color: white;
+      #follow_form{
+        .follow-btn{
+          width: 115.297px;
+          background-color:  #87ceeb40;
+          border:solid 1px rgba(42,119,203,0.5);
+          color:#2a77cb;
+          font-size: 16px;
+          border-radius: 1000px;
+        }
+        .unfollow-btn{
+          background-color: #f5040452;
+          border: solid 1px #f7050578;
+          font-size: 16px;
+          border-radius: 1000px;
+          color: white;
+          width: 115.297px;
+        }
       }
+    }
+    .edit_button{
+      float: left;
+      height: 36px;
+      width: 100%;
+      .edit-intro-btn{
+        float: left;
+        //margin-left: 338px;
+        margin-top: 36px;
+        cursor: pointer;
+      }
+    }
+
+
+    .user_profile_intro{
+      float:left;
+      width:100%;
+      //margin-left: 5px;
+      margin-top: 40px;
+
+      .user_profile_intro_content{
+        float: left;
+        width: 600px;
+        //margin-left: 338px;
+        font-size: 22px;
+        margin-top: -20px;
+        font-style: italic;
+        color: grey;
+        margin-bottom: 30px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        #introduction{
+          min-height: 70px;
+        }
+      }
+    }
+
+    .intro-control{
+      float: left;
+      width: 600px;
+      border: solid;
+      //margin-left: 338px;
+      font-size: 22px;
+      margin-top: -20px;
+      font-style: italic;
+      color: grey;
+      margin-bottom: 5px;
+      display: none;
+    }
+
+    .intro-control-submit{
+      float: left;
+      width: 80px;
+      //margin-left: 338px;
+      background-color:#2a77cb;
+      color: white;
+      display:none;
+    }
+
+    #user_profile_cancel_btn{
+      float: left;
+      width: 80px;
+      margin-left: 10px;
+      border: 1px solid #bbb;
+      border-radius: 5px;
+      display: none;
     }
   }
 
-
-  .user_profile_intro{
+  .user_profile_right{
     float:left;
-    width:100%;
-    margin-left: 5px;
-    margin-top: 5px;
-        .user_profile_intro_content{
-          float: left;
-          width: 600px;
-          margin-left: 338px;
-          font-size: 22px;
-          margin-top: -20px;
-          font-style: italic;
-          color: grey;
-          margin-bottom: 30px;
-          word-wrap: break-word;
-          overflow-wrap: break-word;
-        }
+    width: 200px;
+    .user_profile_join{
+      font-size: 22px;
+      float: left;
+      /* width: 100%; */
+      margin-top: 105px;
+      color: grey;
+      /* margin-left: 100px; */
+      border-left: solid #ffa50094;
+      padding-left: 10px;
+      margin-bottom: 30px;
+    }
+    .user_profile_stat{
+      float:left;
+      font-size: 22px;
+      padding-left: 10px;
+      border-left: solid coral;
+      a{
+        color: grey;
       }
-  .edit-intro-btn{
-    float: left;
-    margin-left: 338px;
-    margin-top: -45px;
-    cursor: pointer;
+    }
   }
+}
 
-  .intro-control{
-    float: left;
-    width: 600px;
-    border: solid;
-    margin-left: 338px;
-    font-size: 22px;
-    margin-top: -20px;
-    font-style: italic;
-    color: grey;
-    margin-bottom: 5px;
-    display: none;
+.user_nav_col{
+  float: left;
+  width: 25%;
+  margin-top: 30px;
+  font-size: 18px;
+  .user_nav_col_ul{
+    list-style-type:none;
+    padding:0;
+    .user_nav_col_li{
+      height: 42px;
+      line-height: 42px;
+      padding-left: 35px;
+    }
   }
+}
 
-  .intro-control-submit{
-    float: left;
-    width: 80px;
-    margin-left: 338px;
-    background-color:#2a77cb;
-    color: white;
-    display:none;
-  }
-
-  #user_profile_cancel_btn{
-    float: left;
-    width: 80px;
-    margin-left: 10px;
-    border: 1px solid #bbb;
-    border-radius: 5px;
-    display: none;
-  }
+.user_body{
+  float:right;
+  width: 70%;
+  height: 200px;
+  border:solid;
+  margin-top: 30px;
 }
 

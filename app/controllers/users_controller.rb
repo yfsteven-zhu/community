@@ -34,6 +34,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def overview
+    respond_to do |f|
+      f.html{ redirect_to @user}
+      f.js
+    end
+  end
+
   private 
 
     def user_params

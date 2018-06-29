@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   attr_accessor :remember_token, :reset_token
 
-  validates :name, presence: true, length: { minimum:3, maximum:20 },
+  validates :name, presence: true, length: { minimum:3, maximum:15 },
                         format: { with:/\A([\w\.\-\@]+\s*)+\z/,
                              message: "only allows letter, number, _, - ,@ and space" },
                         uniqueness: { case_sensitive: false }

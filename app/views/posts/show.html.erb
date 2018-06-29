@@ -54,6 +54,13 @@
         <div class="post_user_info_user">
           <h4><%= sanitize link_to @post.user.name, @post.user %></h4>
         </div>
+        <div class="follow_button">
+          <% if logged_in? %>
+            <%= render 'users/follow_form' %>
+          <% else %>
+            <%= link_to "+ Follow", login_path, class:"btn follow-btn", data:{confirm:"You need to log in first!"} %>
+          <% end %>
+        </div>
       </li>
       <li class="trending_discussion">
         <h3>Trending discussions</h3>

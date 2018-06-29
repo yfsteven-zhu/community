@@ -36,7 +36,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @recent_reply = Post.all.order('comment_create_at desc').limit(5)
     #@trending = Post.joins(:impressions).where('impressions.created_at > ?',24.hours.ago).group("impressions.impressionable_id").order("count(impressions.id) DESC")
-
+    @user = @post.user
     @trending = Post.joins(:comments).where('comments.created_at > ?', 24.hours.ago).group("comments.commentable_id").order("count(comments.id) DESC").limit(5)
   end
 
