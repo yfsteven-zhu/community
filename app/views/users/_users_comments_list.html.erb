@@ -1,0 +1,10 @@
+<% @comments.each do |comment|%>
+  <li id="comments-<%= comment.id%>" class="user_body_comments_li">
+    <div class="user_body_comments_time">
+      <%= @user.name %> replies comments in the post
+    </div>
+    <div class="user_body_comments_content">
+      <%= sanitize comment.content %>
+    </div>
+  </li>
+<% end %>

@@ -1,0 +1,20 @@
+<% @posts.each do |post|%>
+  <li id="post-<%= post.id%>" class="user_body_posts_li">
+    <div class="user_body_posts_time">
+      <%= @user.name %> posted on <%=post.created_at.strftime("%B %d, %Y")%>
+    </div>
+    <div class="user_body_posts_title">
+      <%= sanitize link_to (raw(post.title)), post %>
+    </div>
+    <div class="user_body_posts_info">
+      <div>
+        <%=image_tag ("view-icon.png"), size:"20x18", style:"margin-top:-3px;margin-right:8px;" %>Views: <%=post.impressionist_count %>
+      </div>
+      <br>
+      <div>
+        <%=link_to ((image_tag ("comment_icon.png"),size:"15x15", style:"margin-left: 3px;margin-right: 9px;")+"Comments:"),post_path(post,anchor: 'hidden_comment_anchor') %>
+        <%= link_to post.comments.size ,post_path(post,anchor: 'hidden_comment_anchor')  %>
+      </div>
+    </div>
+  </li>
+<% end %>

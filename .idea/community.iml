@@ -19,7 +19,6 @@
       <excludeFolder url="file://$MODULE_DIR$/.bundle" />
       <excludeFolder url="file://$MODULE_DIR$/components" />
       <excludeFolder url="file://$MODULE_DIR$/public/system" />
-      <excludeFolder url="file://$MODULE_DIR$/public/uploads/cache" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cache" />

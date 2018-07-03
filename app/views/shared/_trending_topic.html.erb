@@ -12,8 +12,8 @@
         <div class="trending_title">
           <%= sanitize link_to (raw(trending.title)), trending, class:"t_title"%>
           <br>
-          <%=image_tag ("comment_icon.png"),size:"15x15", style:"margin-right:10px;" %>
-          <%= link_to trending.comments.size ,post_path(trending,anchor: 'comments_header'),class:"t_count"  %>
+          <%= link_to (image_tag ("comment_icon.png"),size:"15x15", style:"margin-right:10px;"), post_path(trending,anchor: 'hidden_comment_anchor') %>
+          <%= link_to trending.comments.size ,post_path(trending,anchor: 'hidden_comment_anchor'),class:"t_count"  %>
         </div>
       </li>
     </ul>

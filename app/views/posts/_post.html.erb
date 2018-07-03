@@ -34,8 +34,8 @@
       <%=image_tag ("view-icon.png"), size:"20x18", style:"margin-top:-3px;margin-right:8px;" %><%=post.impressionist_count %>
       </div>
       <div class="post_info_comment">
-      <%=link_to (image_tag ("comment_icon.png"),size:"15x15", style:"margin-right:10px;"),post_path(post,anchor: 'comments_header') %>
-        <%= link_to post.comments.size ,post_path(post,anchor: 'comments_header')  %>
+      <%=link_to (image_tag ("comment_icon.png"),size:"15x15", style:"margin-right:10px;"),post_path(post,anchor: 'hidden_comment_anchor') %>
+        <%= link_to post.comments.size ,post_path(post,anchor: 'hidden_comment_anchor')  %>
       </div>
       <% if current_user && current_user.admin? %>
       <%= link_to "delete", post, method: :delete,

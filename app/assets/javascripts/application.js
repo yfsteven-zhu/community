@@ -19,6 +19,7 @@
 //= require uploader
 //= require ckeditor/init
 //= require expand.js
+//= require backtotop.js
 //= require turbolinks
 //= require trix
 //= require_tree .

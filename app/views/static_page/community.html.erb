@@ -19,12 +19,11 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="background-color: #f2f2f2;
             color: black;
             border-color: #f2f2f2;">
-          Sort by:
+          Sort by: Posts - Newest
           <span class="caret"></span></button>
         <ul class="dropdown-menu" id="sort-menu">
           <li><%= link_to "Posts - Newest", recent_static_page_index_path %></li>
           <li><%= link_to "Comments - Newest", reply_static_page_index_path %></li>
-
         </ul>
       </div>
         <% end %>
@@ -72,6 +71,7 @@
 <% end %>
 </div>
 
+<!--
 <script>
     document.addEventListener("turbolinks:load", function() {
         $('#sort-menu li').click(function (e) {
@@ -90,3 +90,4 @@
 
     });
 </script>
+-->

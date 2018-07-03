@@ -13,11 +13,14 @@ Rails.application.routes.draw do
   root 'static_page#home'
 
   resources :users do
-    collection do
-      get :overview
-    end
+
     member do
       get :following, :followers
+      get :overview
+      get :posts_list
+      get :comments_list
+      get :followinglist
+      get :followerlist
     end
   end
 

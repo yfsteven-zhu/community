@@ -35,10 +35,29 @@ class UsersController < ApplicationController
   end
 
   def overview
-    respond_to do |f|
-      f.html{ redirect_to @user}
-      f.js
-    end
+    @user = User.find(params[:id])
+
+  end
+
+  def posts_list
+    @user = User.find(params[:id])
+    @posts = @user.posts.all
+
+  end
+
+  def comments_list
+    @user = User.find(params[:id])
+    @comments = @user.comments.all
+  end
+
+  def followinglist
+    @user = User.find(params[:id])
+    @follow_member = @user.following.all
+  end
+
+  def followerlist
+    @user = User.find(params[:id])
+    @follow_member = @user.followers.all
   end
 
   private 

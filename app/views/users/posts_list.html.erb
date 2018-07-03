@@ -13,19 +13,19 @@
 
   <div class="user_profile">
     <div class="user_profile_left">
-    <div class="user_profile_avatar">
-      <% if @user.picture? %>
-        <%= image_tag @user.picture.url class:"img-circle" %>
-      <% else %>
-        <%= image_tag ('default.jpg'), class:"img-circle"%>
-      <% end %>
-    </div>
+      <div class="user_profile_avatar">
+        <% if @user.picture? %>
+          <%= image_tag @user.picture.url class:"img-circle" %>
+        <% else %>
+          <%= image_tag ('default.jpg'), class:"img-circle"%>
+        <% end %>
+      </div>
     </div>
 
     <div class="user_profile_middle">
-    <div class="user_profile_name">
-      <p> <%= @user.name %></p>
-    </div>
+      <div class="user_profile_name">
+        <p> <%= @user.name %></p>
+      </div>
       <div class="follow_button">
         <% if logged_in? %>
           <%= render 'follow_form' %>
@@ -38,26 +38,26 @@
           <%=image_tag ("edit_icon.png"), size:"20x18", class:"edit-intro-btn" %>
         </div>
       <% end %>
-    <div class="user_profile_intro">
-      <% if @user.introduction? %>
-        <div class="user_profile_intro_content">
-          <div id="introduction"><%= simple_format(@user.introduction) %></div>
-        </div>
-      <% else %>
-      <div class="user_profile_intro_content">
-        <div id="introduction">No description yet :( </div>
-      </div>
-      <% end %>
-    </div>
-    <div style="float: left;width: 600px;">
-      <%= form_for(@user) do |f|%>
-      <%= f.text_area :introduction, maxlength:75, class:"intro-control" %>
-        <%= f.submit "submit", class:"intro-control-submit"%>
+      <div class="user_profile_intro">
+        <% if @user.introduction? %>
+          <div class="user_profile_intro_content">
+            <div id="introduction"><%= simple_format(@user.introduction) %></div>
+          </div>
+        <% else %>
+          <div class="user_profile_intro_content">
+            <div id="introduction">No description yet :( </div>
+          </div>
         <% end %>
-      <button id="user_profile_cancel_btn">
-        close
-      </button>
-    </div>
+      </div>
+      <div style="float: left;width: 600px;">
+        <%= form_for(@user) do |f|%>
+          <%= f.text_area :introduction, maxlength:75, class:"intro-control" %>
+          <%= f.submit "submit", class:"intro-control-submit"%>
+        <% end %>
+        <button id="user_profile_cancel_btn">
+          close
+        </button>
+      </div>
     </div>
     <div class="user_profile_right">
       <div class="user_profile_join">
@@ -73,10 +73,10 @@
   <div class="user_nav_col">
     <ul class="user_nav_col_ul">
       <li class="user_nav_col_li">
-        <%= link_to "Overview", overview_user_path(anchor: 'hidden_profile_anchor'), class:"btn btn-primary" %>
+        <%= link_to "Overview", overview_user_path(anchor: 'hidden_profile_anchor'), class:"btn btn-default" %>
       </li>
       <li class="user_nav_col_li">
-        <%= link_to "Posts", posts_list_user_path(anchor: 'hidden_profile_anchor'), class:"btn btn-default"%>
+        <%= link_to "Posts", posts_list_user_path(anchor: 'hidden_profile_anchor'), class:"btn btn-primary"%>
       </li>
       <li class="user_nav_col_li">
         <%= link_to "Comments", comments_list_user_path(anchor: 'hidden_profile_anchor'), class:"btn btn-default"%>
@@ -91,11 +91,44 @@
   </div>
 
   <div class="user_body">
-
+    <div id="hidden_profile_anchor" style="visibility:hidden; height:51px; margin-top:-61px;"></div>
+    <div style="margin-top:10px;"></div>
+    <% if !current_user?(@user) %>
+      <header class="user_body_post_header">
+        <%= @user.name %>'s <%= @user.posts.count %> post(s)
+      </header>
+    <% else %>
+      <header class="user_body_post_header">
+        Your <%= @user.posts.count %> post(s)
+      </header>
+    <% end %>
+    <input type="text" id="user_post_search" onkeyup="search_post_user()" placeholder="&#xf002; search for title..."
+           title="type in a title">
+    <div class="user_body_post_div">
+      <ul class="user_body_posts_ul">
+        <%= render 'users_posts_list' %>
+      </ul>
+    </div>
   </div>
 </div>
 
 <script>
+    function search_post_user(){
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("user_post_search");
+        filter = input.value.toUpperCase();
+        ul = document.getElementsByClassName("user_body_posts_ul")[0];
+        li = ul.getElementsByClassName("user_body_posts_li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByClassName("user_body_posts_title")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+
     document.addEventListener("turbolinks:load", function(){
         var intro= document.getElementById("introduction");
         var intro_form= document.getElementsByClassName("intro-control")[0];
@@ -114,7 +147,8 @@
             intro_form.style.display="none";
             intro_submit.style.display="none";
             intro_cancel.style.display="none";
-            });
+
+        });
 
 
     });
