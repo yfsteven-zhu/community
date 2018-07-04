@@ -1,0 +1,42 @@
+<li id="update_<%= update.id %>" class="update">
+  <section class="updates-body">
+    <aside class="avatar_img">
+      <% if update.user.picture?%>
+        <%= link_to (image_tag update.user.picture.url class:"img-circle"), update.user %>
+      <% else %>
+        <%= link_to (image_tag ('default.jpg'), class:"img-circle"), update.user %>
+      <% end %>
+    </aside>
+
+    <span class="update-info">
+        <%= sanitize link_to update.user.name, update.user %> &bull;
+      <%= localize(update.created_at, format: :long) %>
+    </span>
+
+    <div class="update-content">
+      <%= sanitize update.content %>
+    </div>
+    <div class="update-menu">
+      <% if current_user&.admin? %>
+        <%= link_to "EDIT", edit_polymorphic_path([update.updateable, update]), class: 'edit-update-link', remote: true  %> &bull;
+        <%= link_to "DELETE", [update.updateable, update], method: :delete, class: 'delete-update-link', data:{confirm:"Are your sure?"}, remote: true %> &bull;
+      <% end %>
+      <% if current_user?(update.user)&&!current_user.admin? %>
+        <%= link_to "EDIT", edit_polymorphic_path([update.updateable, update]), class: 'edit-update-link', remote: true  %> &bull;
+        <%= link_to "DELETE", [update.updateable, update], method: :delete, class: 'delete-update-link', data:{confirm:"Are your sure?"}, remote: true %> &bull;
+      <% end %>
+      <% if logged_in? %>
+        <%= link_to "REPLY", polymorphic_path([:reply, update.updateable, update]), class: 'reply-update-link', remote: true  %>
+      <% else %>
+        <%= link_to "REPLY", login_path, data:{confirm:"You need to log in first!"} ,class: 'reply-update-link' %>
+      <% end %>
+    </div>
+  </section>
+
+<% if update.updatereplies.any? %>
+  <ul style="padding-left:15px;">
+    <%= render update.updatereplies %>
+  </ul>
+<% end %>
+
+</li>

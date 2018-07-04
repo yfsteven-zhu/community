@@ -22,6 +22,12 @@ Rails.application.routes.draw do
       get :followinglist
       get :followerlist
     end
+
+    resources :updates, except: [:index, :new, :show] do
+      member do
+        get :reply
+      end
+    end
   end
 
   resources :password_resets,  only: [:new, :create, :edit, :update]

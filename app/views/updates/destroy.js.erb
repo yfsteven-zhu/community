@@ -1,0 +1,7 @@
+$updates_count = $("#updates-count-of-updateable-<%= @updateable.id %>");
+<% if @update.errors.empty? %>
+$updates_count.html("<%= @updateable.updates.size %>").effect('highlight',{}, 1000);
+$("#update_<%= @update.id %>").effect("highlight", { color: '#f7937c' }, 500).slideUp('fast');
+<% else %>
+$("#updates-widget-of-updateable-<%= @updateable.id %> .updates-header").after("<div class='alert alert-warning alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><%= @update.errors.full_messages.join('') %></div>").next().delay(1500).slideUp('fast');
+<% end %>

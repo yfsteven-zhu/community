@@ -1,0 +1,13 @@
+<div id="updates-widget-of-updateable-<%= updateable.id %>" class="updates-widget">
+  <div id="hidden_update_anchor" style="visibility:hidden; height:51px; margin-top:-55px;">2323</div>
+  <h2 class="updates-header" id="updates_header">
+    updates <nobr id="updates-count-of-updateable-<%= updateable.id %>"><%= updateable.updates.size %></nobr>
+  </h2>
+  <div class="update-individual">
+    <ul class="updates-list">
+      <%= render updateable.updates.where(updateparent: nil) %>
+    </ul>
+  </div>
+  <!-- update-form -->
+  <%= render "updates/form", update: updateable.updates.build  %>
+</div>

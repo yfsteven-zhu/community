@@ -95,7 +95,7 @@
     <div style="margin-top:10px;"></div>
     <% if !current_user?(@user) %>
       <div class="personal_update">
-
+        <%= render "updates/widget", updateable: @user %>
       </div>
     <% else %>
     <% end %>
