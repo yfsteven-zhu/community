@@ -41,13 +41,14 @@ class UsersController < ApplicationController
 
   def posts_list
     @user = User.find(params[:id])
-    @posts = @user.posts.all
+    @posts = @user.posts.all.order('created_at desc')
 
   end
 
   def comments_list
     @user = User.find(params[:id])
-    @comments = @user.comments.all
+    @comments = @user.comments.all.order('created_at desc')
+    @posts = Post.all
   end
 
   def followinglist

@@ -121,7 +121,7 @@
         ul = document.getElementsByClassName("user_body_comments_ul")[0];
         li = ul.getElementsByClassName("user_body_comments_li");
         for (i = 0; i < li.length; i++) {
-          //  a = li[i].getElementsByClassName("user_body_comments_title")[0];
+            a = li[i].getElementsByClassName("user_body_comments_content")[0];
             if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
                 li[i].style.display = "";
             } else {

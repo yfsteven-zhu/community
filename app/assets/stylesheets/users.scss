@@ -359,8 +359,8 @@ input {
   }
 }
 
-.user_body{
-  float:right;
+.user_body {
+  float: right;
   width: 75%;
   //height: 200px;
   //border:solid;
@@ -372,63 +372,63 @@ input {
   border-radius: 3px;
 
   /* menu: view posts   */
-  #user_post_search{
+  #user_post_search {
     font-family: FontAwesome;
     width: 300px;
     font-size: 16px;
     margin-top: 10px;
-    margin-left:20px;
+    margin-left: 20px;
     margin-bottom: 0px;
-    float:left;
+    float: left;
     padding: 0px 20px 0px 20px;
     border: 1px solid #ddd;
   }
   .user_body_post_header{
-    margin-top:12px;
-    float:left;
-    margin-left:20px;
+    margin-top: 12px;
+    float: left;
+    margin-left: 20px;
   }
 
   .user_body_post_div{
-    float:left;
-    width:100%;
+    float: left;
+    width: 100%;
     background-color: white;
 
     .user_body_posts_ul{
       float: left;
       list-style-type: none;
-      padding-left:0;
+      padding-left: 0;
       width: 100%;
       margin-top: 15px;
       .user_body_posts_li{
 
-        float:left;
-        width:90%;
+        float: left;
+        width: 90%;
         border-bottom: 1px solid #cccaca;
         margin-left: 43.21px;
-        padding-bottom:10px;
-        padding-top:10px;
+        padding-bottom: 10px;
+        padding-top: 10px;
         .user_body_posts_time{
           font-size: 20px;
         }
         .user_body_posts_title{
           width: 50%;
           float: left;
-          font-size:26px;
-          font-weight:bold;
-          a{
-            color:black;
+          font-size: 26px;
+          font-weight: bold;
+          a {
+            color: black;
           }
 
         }
 
         .user_body_posts_info{
-          float:right;
+          float: right;
           width: 50%;
-          div{
-            float:left;
+          div {
+            float: left;
             padding-left: 200px;
-             a{
+            a {
               color: black;
             }
           }
@@ -436,6 +436,91 @@ input {
       }
     }
   }
+
+  /* menu: comments */
+  #user_comments_search {
+    font-family: FontAwesome;
+    width: 300px;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+    float: left;
+    padding: 0px 20px 0px 20px;
+    border: 1px solid #ddd;
+  }
+
+  .user_body_comments_header {
+    margin-top: 12px;
+    float: left;
+    margin-left: 20px;
+  }
+
+  .user_body_comments_div {
+    float: left;
+    width: 100%;
+    background-color: white;
+
+    .user_body_comments_ul {
+      float: left;
+      list-style-type: decimal;
+      font-size: 20px;
+      padding-left: 0;
+      width: 100%;
+      margin-top: 15px;
+      .user_body_comments_li {
+
+        float: left;
+        width: 90%;
+        border-bottom: 1px solid #cccaca;
+        margin-left: 43.21px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        li{
+          list-style-type:initial;
+        }
+
+        .user_body_comments_time{
+          font-size: 20px;
+          a{
+            color: black;
+            font-weight: bold;
+
+          }
+        }
+
+        .user_body_comments_content.short{
+          font-size: 26px;
+          overflow: hidden;
+          max-height: 37px;
+
+          a{
+            color: #989898;
+            text-decoration: none;
+          }
+
+        }
+
+        .user_body_comments_content.full{
+          font-size: 26px;
+          a{
+            color: #989898;
+            text-decoration: none;
+          }
+
+        }
+
+        .display-more{
+          cursor: pointer;
+          display: inline-block;
+          color: #adb7bf;
+          font-size: 18px;
+        }
+
+      }
+    }
+  }
+
 
 
   /* menu:followers and followings */

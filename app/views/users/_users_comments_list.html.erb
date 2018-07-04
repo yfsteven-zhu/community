@@ -1,10 +1,53 @@
 <% @comments.each do |comment|%>
   <li id="comments-<%= comment.id%>" class="user_body_comments_li">
     <div class="user_body_comments_time">
-      <%= @user.name %> replies comments in the post
+      Re: <%= link_to @posts.find(comment.commentable_id).title,
+                                                        @posts.find(comment.commentable_id) %> on <%=comment.created_at.strftime("%B %d, %Y")%>
     </div>
-    <div class="user_body_comments_content">
-      <%= sanitize comment.content %>
+    <div class="user_body_comments_content short">
+      <a href="/posts/<%= comment.commentable_id %>#hidden_comment_anchor_<%= comment.id %>">
+          <%= sanitize comment.content,
+                       tags:%w(p i b table tbody tr td u s em blockquote ol ul li strong sub sup span hr img object br ),
+                       attributes: %w(id name alt src color href style border cellpadding cellspacing class) %>
+      </a>
     </div>
+    <span class="display-more">...</span>
   </li>
 <% end %>
+
+<script>
+    document.addEventListener("turbolinks:load", function(){
+        var moretext = "...";
+        var lesstext = "hide";
+
+        var tag= document.getElementsByClassName("display-more");
+        var area= document.getElementsByClassName("user_body_comments_content");
+
+        $(".display-more").click(function(){
+            var $elem = $(this).parent().find(".user_body_comments_content");
+            if($elem.hasClass("short"))
+            {
+                $elem.removeClass("short").addClass("full");
+            }
+            else
+            {
+                $elem.removeClass("full").addClass("short");
+            }
+
+            if($(this).hasClass("less")){
+                $(this).removeClass("less");
+                $(this).html(moretext);
+            } else {
+                $(this).addClass("less");
+                $(this).html(lesstext);
+            }
+        });
+
+        var list = document.getElementsByClassName("user_body_comments_content")
+        for (var i=0;i< list.length;i++){
+            if (area[i].scrollHeight <= 37){
+                tag[i].style.display = "none";
+            }
+        }
+    });
+</script>

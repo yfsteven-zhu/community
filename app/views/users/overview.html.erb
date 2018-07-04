@@ -93,7 +93,12 @@
   <div class="user_body">
     <div id="hidden_profile_anchor" style="visibility:hidden; height:51px; margin-top:-61px;"></div>
     <div style="margin-top:10px;"></div>
+    <% if !current_user?(@user) %>
+      <div class="personal_update">
 
+      </div>
+    <% else %>
+    <% end %>
   </div>
 </div>
 
