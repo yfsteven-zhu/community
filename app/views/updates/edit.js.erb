@@ -1,6 +1,9 @@
 <% if @update.errors.empty? %>
 $("#update_<%= @update.id %> > .updates-body .update-info .edit-update-link").removeAttr("href");
 $("#update_<%= @update.id %> > .updates-body .update-content").after("<%=j render('updates/form', update: @update) %>");
+
+$("#update_<%= @update.id %> > .updatereply-body .updatereply-menu .edit-update-link").removeAttr("href");
+$("#update_<%= @update.id %> > .updatereply-body .updatereply-menu").after("<%=j render('updates/form', update: @update) %>");
 <% else %>
 $("#updates-widget-of-updateable-<%= @updateable.id %> .updates-header").after("<div class='alert alert-warning alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><%= @update.errors.full_messages.join('') %></div>").next().delay(1500).slideUp('fast');
 <% end %>

@@ -1,13 +1,15 @@
 <div class="update-form">
   <%= simple_form_for [update.updateable, update], remote: true do | f | %>
     <%= f.hidden_field :updateparent_id %>
-    <%= f.trix_editor :content,label: false, placeholder: (f.object.updateparent_id.nil? ? 'Leave update here' : 'Leave reply here.'),
+    <%= f.input :content,label: false, placeholder: (f.object.updateparent_id.nil? ? 'Share an update with your friends' : 'Reply to comment'),
                       input_html: { rows: 5, data:{ 'update-id': (update.persisted? ? update.id : 'new') }} %>
     <%= link_to "Cancel", "#", 'data-updatereply': update.updateparent_id.present?,
-                style:"margin-top:10px; margin-bottom:20px; width: auto; float: right; margin-left:10px;",
+                style:"margin-bottom:20px; width: 90px; float: right; margin-left:10px;
+                 margin-right: 3px;box-shadow: 3px 3px 0px #2a2a2bd1;font-size: 16px",
                 class: 'cancel-update-link btn btn-default btn-sm float-xs-right ml-1' if update.persisted? or update.updateparent%>
-    <%= f.submit class: 'btn btn-primary  btn-sm float-xs-right', style:"margin-top:10px; margin-bottom:20px;
-                                                                                          width: auto; float: right;" %>
+    <%= f.submit "Share", class: 'btn btn-primary  btn-sm float-xs-right', style:"margin-bottom:20px; box-shadow: 3px 3px 0px #5a9afba8;
+                                                                           background-color: skyblue; border: solid 1px lightblue;
+                                                                           float: right; width: 100px;font-size: 16px;" %>
     <div class="clearfix"></div>
   <% end %>
 </div>

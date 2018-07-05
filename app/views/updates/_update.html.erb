@@ -16,26 +16,52 @@
     <div class="update-content">
       <%= sanitize update.content %>
     </div>
+
+    <div class="update-comment-count">
+      <% if update.updatereplies.any? %>
+        <%= update.updatereplies.size %> Comments
+      <% end %>
+    </div>
+
+
     <div class="update-menu">
+      <div class="update-menu-user">
       <% if current_user&.admin? %>
-        <%= link_to "EDIT", edit_polymorphic_path([update.updateable, update]), class: 'edit-update-link', remote: true  %> &bull;
-        <%= link_to "DELETE", [update.updateable, update], method: :delete, class: 'delete-update-link', data:{confirm:"Are your sure?"}, remote: true %> &bull;
+        <%= link_to edit_polymorphic_path([update.updateable, update]), class: 'edit-update-link', remote: true do %>
+            <i class="fa fa-edit"></i> EDIT
+            <% end %> &bull;
+        <%= link_to [update.updateable, update], method: :delete, class: 'delete-update-link', data:{confirm:"Are your sure?"}, remote: true do %>
+            <i class="fa fa-trash-o"></i> DELETE
+      <% end %>
       <% end %>
       <% if current_user?(update.user)&&!current_user.admin? %>
-        <%= link_to "EDIT", edit_polymorphic_path([update.updateable, update]), class: 'edit-update-link', remote: true  %> &bull;
-        <%= link_to "DELETE", [update.updateable, update], method: :delete, class: 'delete-update-link', data:{confirm:"Are your sure?"}, remote: true %> &bull;
+          <%= link_to edit_polymorphic_path([update.updateable, update]), class: 'edit-update-link', remote: true do %>
+            <i class="fa fa-edit"></i> EDIT
+          <% end %> &bull;
+          <%= link_to [update.updateable, update], method: :delete, class: 'delete-update-link', data:{confirm:"Are your sure?"}, remote: true do %>
+            <i class="fa fa-trash-o"></i> DELETE
+          <% end %>
       <% end %>
+    </div>
+      <div class="update-menu-reply">
       <% if logged_in? %>
-        <%= link_to "REPLY", polymorphic_path([:reply, update.updateable, update]), class: 'reply-update-link', remote: true  %>
+          <%= link_to polymorphic_path([:reply, update.updateable, update]), class: 'reply-update-link', remote: true do  %>
+            <i class='fa fa-comments-o'></i> COMMENT
+          <% end  %>
       <% else %>
-        <%= link_to "REPLY", login_path, data:{confirm:"You need to log in first!"} ,class: 'reply-update-link' %>
+          <%= link_to login_path, data:{confirm:"You need to log in first!"} ,class: 'reply-update-link' do %>
+            <i class='fa fa-comments-o'></i> COMMENT
+          <% end %>
       <% end %>
+      </div>
     </div>
   </section>
 
+  <p class="show_more_comment">Show more</p>
+
 <% if update.updatereplies.any? %>
-  <ul style="padding-left:15px;">
-    <%= render update.updatereplies %>
+  <ul style="float:left;padding: 0;list-style-type: none;">
+    <%= render "updates/update_reply", update: update.updatereplies %>
   </ul>
 <% end %>
 

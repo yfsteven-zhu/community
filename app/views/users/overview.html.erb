@@ -90,17 +90,12 @@
     </ul>
   </div>
 
-  <div class="user_body">
-    <div id="hidden_profile_anchor" style="visibility:hidden; height:51px; margin-top:-61px;"></div>
-    <div style="margin-top:10px;"></div>
-    <% if !current_user?(@user) %>
+    <div id="hidden_profile_anchor" style="float: right;width: 75%;visibility:hidden; height:51px; margin-top:-31px;"></div>
+    <div style="float: right;margin-top: 10px;width: 75%;"></div>
       <div class="personal_update">
         <%= render "updates/widget", updateable: @user %>
       </div>
-    <% else %>
-    <% end %>
   </div>
-</div>
 
 <script>
     document.addEventListener("turbolinks:load", function(){
@@ -123,6 +118,70 @@
             intro_cancel.style.display="none";
 
         });
+
+        var update = document.getElementsByClassName("update");
+
+
+        for (var i = 0; i < update.length; i++){
+            var reply = update[i].getElementsByClassName("updatereply");
+            var count = 0;
+            var childcount = 0;
+            var index = 0;
+            var parentComment = null;
+            for (var j = 0; j < reply.length; j++){
+                var content=$(".updatereply")[j];
+
+                if ($(content).parent().parent().is(".update")){
+                    parentComment = $(content).attr('id');
+                    childcount = 0;
+                    index = 0;
+                    count++;
+                    if (count > 3){
+                        document.getElementsByClassName("show_more_comment")[i].style.display="block";
+                        reply[j].style.display = "none";
+                    }
+                }
+
+
+                if ($(content).parent().parent().is('#'+parentComment)){
+                    if (index === 0){
+                        index = j;
+                    }
+                    childcount++;
+                    if (childcount > 2){
+                        document.getElementsByClassName("show_more_reply")[index].style.display="block";
+                        for (var a=index; a<j;a++) {
+                            reply[a].style.display = "none";
+                        }
+                    }
+                }
+
+            }
+
+            }
+/*
+            if (reply.length > 3){
+                document.getElementsByClassName("show_more_comment")[i].style.display="block";
+                for (var j = 2; j < reply.length;j++){
+                    reply[j].style.display="none";
+                }
+            }
+        }
+
+
+*/
+
+
+
+        $('.show_more_comment').click(function(){
+            var $elem = $(this).parent().find('ul').find('.updatereply');
+            for (var a=0;a<$elem.length;a++){
+                $elem[a].style.display="block";
+            }
+            $(this).hide();
+        });
+
+        $('')
 
 
     });

@@ -4,16 +4,15 @@
 
 
 .updates-widget {
-
-  margin-bottom: 1em;
-  float: left;
-  width: 800px;
-  border: 1px solid #d6d6d6;
-  box-shadow: 3px 3px 0px #bababa;
-  border-radius: 3px;
-  margin-left: 23px;
-  background-color:white;
-
+  float: right;
+  width: 75%;
+  //height: 200px;
+  //border:solid;
+  min-height: 600px;
+  //background-color: white;
+  //border: 1px solid #d6d6d6;
+  //box-shadow: 3px 3px 0px #828080;
+  //border-radius: 3px;
 
   .updates-header {
     margin-top: 24px;
@@ -22,32 +21,58 @@
     margin-bottom: 20px !important;
   }
   .update-individual{
-    height: auto;
-    width: 800px;
     float: left;
+    width: 100%;
 
     .updates-list {
       padding-left:0;
 
       .update{
         list-style-type: none;
+        float:left;
         //width: 90%;
         //border: solid;
-        overflow: hidden;
         //min-height: 100px;
         //margin-left: 40px;
         //margin-bottom:20px;
+        width: 100%;
+
+        /* margin-left: 40px; */
+        margin-right: 40px;
+        margin-bottom: 20px;
+        //padding-bottom: 10px;
+        border: 1px solid #d6d6d6;
+        box-shadow: 3px 3px 0px #828080;
+        border-radius: 3px;
+
+        .show_more_comment{
+          display:none;
+          float: left;
+          width: 100%;
+          color: #337ab7;
+          cursor: pointer;
+          margin-bottom: 0px;
+          padding-left: 20px;
+          margin-top: 10px;
+          font-size: 16px;
+        }
+
+
 
         .updates-body{
-          float: right;
-          width: 90%;
+          float: left;
+          width: 100%;
 
-          border: 1px solid #e8e8e8;
-          /* margin-left: 40px; */
+          background-color: white;
+          /* margin-left: 40px;
           margin-right: 40px;
           margin-bottom: 20px;
           padding-bottom: 10px;
-
+          background-color: white;
+          border: 1px solid #d6d6d6;
+          box-shadow: 3px 3px 0px #828080;
+          border-radius: 3px;
+          */
           .avatar_img {
             overflow: hidden;
             float: left;
@@ -78,20 +103,96 @@
             //border-top: 1px solid #e8e8e8;
             display: block;
             margin-left: 20px;
-            padding-bottom: 15px;
-            min-height:100px;
+            padding-bottom: 10px;
             ul>li{
               list-style-type:initial;
             }
           }
+          .update-comment-count{
+            float:left;
+            color: #8b8b8b;
+            width: 95%;
+            margin-left:20px;
+            border-bottom: solid 1px #66666659;
+            padding-bottom: 5px;
+          }
 
           .update-menu{
+            float: left;
+            margin-top: 5px;
             font-size:16px;
-            float:right;
-            margin-right:20px;
+            width: 95%;
+            margin-left: 20px;
+            //margin-right:20px;
             a{
               font-weight:bold;
             }
+
+            .update-menu-user{
+              margin-bottom: 15px;
+              float:right;
+            }
+            .update-menu-reply{
+              float:left;
+            }
+          }
+        }
+      }
+
+      .updatereply{
+        border:none;
+        float:left;
+
+        .show_more_reply{
+          display:none;
+          float: left;
+          width: 100%;
+          color: #337ab7;
+          cursor: pointer;
+          margin-bottom: 0px;
+          padding-left: 20px;
+          margin-top: 10px;
+          font-size: 12px;
+        }
+
+        .updatereply-body{
+          float: left;
+          width: 100%;
+          .avatar_img {
+            overflow: hidden;
+            float: left;
+            img {
+              float: left;
+              width: 60px !important;
+              height: auto !important;
+              //margin-left: 60px;
+              margin-top: 15px;
+              margin-left: 20px;
+            }
+          }
+        }
+
+        .updatereply-info{
+          color: #666666;
+          margin-left: 20px;
+          margin-top: 20px;
+          float: left;
+          font-size:20px;
+          width: 670px;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          a{
+            float:left;
+          }
+        }
+
+        .updatereply-menu{
+          float:left;
+          margin-left:20px;
+          margin-bottom: 10px;
+          a{
+            font-family: FontAwesome;
+            font-size: 12px;
           }
         }
       }
@@ -102,15 +203,18 @@
 
 .update-form {
   float:left;
-  margin-left:40px;
-  width: 90%;
+  //margin-left:40px;
+  width: 100%;
 
   li{
     list-style-type: initial;
   }
 
-  trix-editor{
+  textarea{
     min-height:100px;
+    border: 1px solid #d6d6d6;
+    box-shadow: 3px 3px 0px #828080;
+    border-radius: 3px;
     div{
       font-size:16px;
     }

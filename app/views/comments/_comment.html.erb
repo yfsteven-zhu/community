@@ -28,6 +28,9 @@
       <% if current_user?(comment.user)&&!current_user.admin? %>
         <%= link_to "EDIT", edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true  %> &bull;
         <%= link_to "DELETE", [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %> &bull;
+      <% else %>
+        <%= link_to "EDIT", edit_polymorphic_path([comment.commentable, comment]),style:"visibility:hidden", class: 'edit-comment-link', remote: true  %>
+        <%= link_to "DELETE", [comment.commentable, comment], method: :delete, style:"visibility:hidden",class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %>
       <% end %>
       <% if logged_in? %>
       <%= link_to "REPLY", polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true  %>
