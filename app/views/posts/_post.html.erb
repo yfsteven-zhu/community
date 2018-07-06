@@ -40,7 +40,9 @@
       <% if current_user && current_user.admin? %>
       <%= link_to "delete", post, method: :delete,
                   data: { confirm: "You sure?" }, class:"deletebtn" %>
-        <%= link_to "edit", edit_post_path(post), class:"editbtn" %>
+        <%= link_to edit_post_path(post), class:"editbtn" do %>
+        <i class="fa fa-edit"></i>edit
+          <% end %>
     <% end %>
       <% if current_user?(post.user)&&!current_user.admin? %>
       <%= link_to "delete", post, method: :delete,
