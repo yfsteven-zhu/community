@@ -15,11 +15,13 @@
 //= require bootstrap-sprockets
 //= require jquery-ui
 //= require rails-ujs
+//= require jcrop
 //= require activestorage
 //= require uploader
 //= require ckeditor/init
 //= require expand.js
 //= require backtotop.js
+//= require profile.js
 //= require turbolinks
 //= require trix
 //= require_tree .

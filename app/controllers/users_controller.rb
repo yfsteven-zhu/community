@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update, :change_avatar, :change_password]
 
   def new
     @user = User.new
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated"
       redirect_to @user
     else
-      render 'edit'
+      render 'change_password'
     end
   end
 
@@ -61,6 +61,14 @@ class UsersController < ApplicationController
     @follow_member = @user.followers.all
   end
 
+  def change_avatar
+    @user = User.find(params[:id])
+  end
+
+  def change_password
+    @user = User.find(params[:id])
+  end
+
   private 
 
     def user_params
@@ -69,7 +77,7 @@ class UsersController < ApplicationController
                                      :security_question,
                                      :security_answer,
                                      :picture,
-                                     :introduction)
+                                     :introduction,:crop_x, :crop_y, :crop_w, :crop_h)
     end
 
     #confirm a logged-in user

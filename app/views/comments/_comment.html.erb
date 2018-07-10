@@ -6,7 +6,7 @@
 
     <aside class="avatar_img">
       <% if comment.user.picture?%>
-        <%= link_to (image_tag comment.user.picture.url class:"img-circle"), comment.user %>
+        <%= link_to (image_tag comment.user.picture.url, class:"img-circle"), comment.user %>
       <% else %>
         <%= link_to (image_tag ('default.jpg'), class:"img-circle"), comment.user %>
       <% end %>
@@ -22,21 +22,33 @@
     </div>
     <div class="comment-menu">
       <% if current_user&.admin? %>
-        <%= link_to "EDIT", edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true  %> &bull;
-        <%= link_to "DELETE", [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %> &bull;
+        <%= link_to edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true do%>
+          <i class="fa fa-edit"></i> EDIT
+        <% end %> &bull;
+        <%= link_to [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true do %>
+          <i class="fa fa-trash-o"></i> DELETE
+        <% end %> &bull;
       <% end %>
       <% if current_user?(comment.user)&&!current_user.admin? %>
-        <%= link_to "EDIT", edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true  %> &bull;
-        <%= link_to "DELETE", [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %> &bull;
+        <%= link_to edit_polymorphic_path([comment.commentable, comment]), class: 'edit-comment-link', remote: true do %>
+          <i class="fa fa-edit"></i> EDIT
+        <% end %> &bull;
+        <%= link_to [comment.commentable, comment], method: :delete, class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true do%>
+          <i class="fa fa-trash-o"></i> DELETE
+          <% end %> &bull;
       <% else %>
         <%= link_to "EDIT", edit_polymorphic_path([comment.commentable, comment]),style:"visibility:hidden", class: 'edit-comment-link', remote: true  %>
         <%= link_to "DELETE", [comment.commentable, comment], method: :delete, style:"visibility:hidden",class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %>
       <% end %>
       <% if logged_in? %>
-      <%= link_to "REPLY", polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true  %>
-      <% else %>
-      <%= link_to "REPLY", login_path, data:{confirm:"You need to log in first!"} ,class: 'reply-comment-link' %>
-      <% end %>
+      <%= link_to polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true do %>
+          <i class='fa fa-comments-o'></i> REPLY
+          <% end %>
+    <% else %>
+      <%= link_to login_path, data:{confirm:"You need to log in first!"} ,class: 'reply-comment-link' do %>
+          <i class='fa fa-comments-o'></i> REPLY
+          <% end %>
+    <% end %>
     </div>
   </section>
 

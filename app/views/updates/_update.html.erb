@@ -2,7 +2,7 @@
   <section class="updates-body">
     <aside class="avatar_img">
       <% if update.user.picture?%>
-        <%= link_to (image_tag update.user.picture.url class:"img-circle"), update.user %>
+        <%= link_to (image_tag update.user.picture.url, class:"img-circle"), update.user %>
       <% else %>
         <%= link_to (image_tag ('default.jpg'), class:"img-circle"), update.user %>
       <% end %>
@@ -14,7 +14,7 @@
     </span>
 
     <div class="update-content">
-      <%= sanitize update.content %>
+      <%= sanitize update.content, tags:%w(img)  %>
     </div>
 
     <div class="update-comment-count">

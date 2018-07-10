@@ -10,12 +10,12 @@
       <%= render 'shared/error_messages', object: f.object %>
       
       <% if @user.picture? %>
-        <%= image_tag current_user.picture.url, class:"img_preview" %>
+        <%= image_tag current_user.picture.url, class:"img-circle" %>
       <% else %>
-        <%= image_tag ('default.jpg'), :size => "100x100"%>
+        <%= image_tag ('default.jpg'), class:"img-circle"%>
       <% end %>
         <nobr>&nbsp;&nbsp;&nbsp;&nbsp; update  to: &nbsp;&nbsp;&nbsp;&nbsp;
-             <img id="img_prev" src="#" alt="your image"/>
+             <img id="img_prev" src="#" alt="your image" class="img-circle" style="width:160px !important; height:160px !important;"/>
         </nobr>
       <br></br>
       <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png',onchange:"readURL(this)"  %>

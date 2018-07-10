@@ -1,7 +1,7 @@
 <li id="post-<%= post.id%>" class="post_li">
   <aside class="avatar_img">
   <% if post.user.picture?%>
-    <%= link_to (image_tag post.user.picture.url class:"img-circle"), post.user %>
+    <%= link_to (image_tag post.user.picture.url, class:"img-circle"), post.user %>
   <% else %>
     <%= link_to (image_tag ('default.jpg'), class:"img-circle"),post.user %>
   <% end %>
@@ -20,12 +20,16 @@
 
   <div class="article">
     <div class="text-body short">
-    <div class="text">
+    <div class="posttext">
        <%= sanitize post.content ,
-                    tags:%w(p i b table tbody tr td u s em blockquote ol ul li strong sub sup span hr img a object br ),
+                    tags:%w(p i b table tbody tr td u s em blockquote ol ul li strong sub sup span hr img object br ),
                     attributes: %w(id name alt src color href style border cellpadding cellspacing class) %>
     </div>
     </div>
+    <div class="expand-style" style="background: linear-gradient(rgba(255,255,255,0),#fff);
+    float:left;margin-top: -40px;position:absolute;
+    height: 4rem;
+    width: 550px;"></div>
     <span class="read-more">...read more</span>
   </div>
 
@@ -38,16 +42,22 @@
         <%= link_to post.comments.size ,post_path(post,anchor: 'hidden_comment_anchor')  %>
       </div>
       <% if current_user && current_user.admin? %>
-      <%= link_to "delete", post, method: :delete,
-                  data: { confirm: "You sure?" }, class:"deletebtn" %>
+      <%= link_to post, method: :delete,
+                  data: { confirm: "You sure?" }, class:"deletebtn" do %>
+        <i class="fa fa-trash-o"></i> delete
+          <% end %>
         <%= link_to edit_post_path(post), class:"editbtn" do %>
-        <i class="fa fa-edit"></i>edit
+        <i class="fa fa-edit"></i> edit
           <% end %>
     <% end %>
       <% if current_user?(post.user)&&!current_user.admin? %>
-      <%= link_to "delete", post, method: :delete,
-                  data: { confirm: "You sure?" }, class:"deletebtn" %>
-        <%= link_to "edit", edit_post_path(post), class:"editbtn" %>
+      <%= link_to post, method: :delete,
+                  data: { confirm: "You sure?" }, class:"deletebtn" do %>
+          <i class="fa fa-trash-o"></i> delete
+          <% end %>
+        <%= link_to edit_post_path(post), class:"editbtn" do %>
+        <i class="fa fa-edit"></i> edit
+        <% end %>
 
     <% end %>
     </span>

@@ -22,7 +22,7 @@
     <div class="post_show_body_info">
       <aside>
         <% if @post.user.picture?%>
-          <%= image_tag @post.user.picture.url class:"img-circle" %>
+          <%= image_tag @post.user.picture.url, class:"img-circle" %>
         <% else %>
           <%= image_tag ('default.jpg'), class:"img-circle" %>
         <% end %>
@@ -46,7 +46,7 @@
       <li class="post_user_info">
         <div class="post_user_info_avatar">
           <% if @post.user.picture?%>
-            <%= image_tag @post.user.picture.url class:"img-circle" %>
+            <%= image_tag @post.user.picture.url, class:"img-circle" %>
           <% else %>
             <%= image_tag ('default.jpg'), class:"img-circle" %>
           <% end %>

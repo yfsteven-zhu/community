@@ -21,6 +21,8 @@ Rails.application.routes.draw do
       get :comments_list
       get :followinglist
       get :followerlist
+      get :change_avatar
+      get :change_password
     end
 
     resources :updates, except: [:index, :new, :show] do

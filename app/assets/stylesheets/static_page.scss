@@ -78,9 +78,9 @@ textarea {
   }
 }
 
-.header_user_img {
+.img-circle.header {
   height: 35px !important;
-  width: auto !important;
+  width: 35px !important;
   margin-top: 8px;
 }
 
@@ -199,7 +199,7 @@ aside {
   img {
     float: left;
     width: 60px !important;
-    height: auto !important;
+    height: 60px !important;
     margin-left: 40px;
     margin-top: 15px;
   }
@@ -211,6 +211,7 @@ aside {
   background-repeat: no-repeat;
   background-size: contain;
   margin-top: -29px;
+  background-color: #b1dbe6;
   .home_page_welcome{
     height:350px;
     width:700px;

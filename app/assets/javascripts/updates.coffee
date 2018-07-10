@@ -22,3 +22,4 @@ $(document).on "click", '.cancel-update-link', (e) ->
 # Handle 401 error on ajax call.
 $(document).ajaxError (_, xhr)->
   window.location = '/users/sign_in' if xhr.status == 401
+

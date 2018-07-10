@@ -15,7 +15,7 @@
     <div class="user_profile_left">
       <div class="user_profile_avatar">
         <% if @user.picture? %>
-          <%= image_tag @user.picture.url class:"img-circle" %>
+          <%= image_tag @user.picture.url, class:"img-circle" %>
         <% else %>
           <%= image_tag ('default.jpg'), class:"img-circle"%>
         <% end %>
@@ -82,11 +82,29 @@
         <%= link_to "Comments", comments_list_user_path(anchor: 'hidden_profile_anchor'), class:"btn btn-default"%>
       </li>
       <li class="user_nav_col_li">
-        <%= link_to "Followings", followinglist_user_path(anchor: 'hidden_profile_anchor'),class:"btn btn-default"%>
+        <%= link_to "Following", followinglist_user_path(anchor: 'hidden_profile_anchor'),class:"btn btn-default"%>
       </li>
       <li class="user_nav_col_li">
         <%= link_to "Followers", followerlist_user_path(anchor: 'hidden_profile_anchor'), class:"btn btn-default"%>
       </li>
+      <% if current_user?(@user) %>
+      <hr style="    margin-top: 5px;border-top: 1px solid #c7c7c7;margin-bottom: 5px;">
+        <li class="user_nav_col_li" >
+          <div class="user_setting" id="setting_div">Setting <b class="caret"></b></div>
+        </li>
+        <li class="user_nav_col_li" id="change_avatar" style="display:none;">
+
+            <%= link_to change_avatar_user_path(anchor: 'hidden_profile_anchor'), class:"setting_link" do %>
+            <div class="user_setting">Update avatar</div>
+            <% end %>
+        </li>
+        <li class="user_nav_col_li" id="change_password" style="display:none;">
+          <%= link_to change_password_user_path(anchor: 'hidden_profile_anchor'), class:"setting_link" do %>
+            <div class="user_setting">Change password</div>
+          <% end %>
+        </li>
+
+        <% end %>
     </ul>
   </div>
 
@@ -96,49 +114,3 @@
     <%= render "updates/widget", updateable: @user %>
   </div>
 </div>
-
-<script>
-    document.addEventListener("turbolinks:load", function(){
-        var intro= document.getElementById("introduction");
-        var intro_form= document.getElementsByClassName("intro-control")[0];
-        var intro_submit = document.getElementsByClassName("intro-control-submit")[0];
-        var intro_cancel = document.getElementById("user_profile_cancel_btn");
-
-        $('.edit-intro-btn').click(function(){
-            intro.style.display="none";
-            intro_form.style.display="block";
-            intro_submit.style.display="block";
-            intro_cancel.style.display="block";
-        });
-
-        $('#user_profile_cancel_btn').click(function(){
-            intro.style.display="block";
-            intro_form.style.display="none";
-            intro_submit.style.display="none";
-            intro_cancel.style.display="none";
-
-        });
-
-        var update = document.getElementsByClassName("update");
-
-        for (var i = 0; i < update.length; i++){
-            var reply = update[i].getElementsByClassName("updatereply");
-            if (reply.length > 3){
-                document.getElementsByClassName("show_more_comment")[i].style.display="block";
-                for (var j = 2; j < reply.length;j++){
-                    reply[j].style.display="none";
-                }
-            }
-        }
-
-        $('.show_more_comment').click(function(){
-            var $elem = $(this).parent().find('ul').find('.updatereply');
-            for (var a=0;a<$elem.length;a++){
-                $elem[a].style.display="block";
-            }
-            $(this).hide();
-        });
-
-
-    });
-</script>

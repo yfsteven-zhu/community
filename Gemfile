@@ -41,6 +41,11 @@ gem 'impressionist'
 
 gem 'trix', git: 'https://github.com/bcoia/trix.git'
 
+gem 'rails-assets-jcrop', source: 'https://rails-assets.org'
+
+gem 'notifications', '~> 0.6.0'
+
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

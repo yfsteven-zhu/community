@@ -15,7 +15,7 @@
         margin-top: -8px;    padding-bottom: 20px;">
       <% if !flash[:login_danger].present? %>
       <% flash.each do |message_type, message| %>
-        <div class = "alert alert-<%= message_type %>"><%= message %></div>
+        <div class = "alert alert-<%= message_type %>" style="text-align:center;"><%= message %></div>
       <% end %>
         <% end %>
       <%= yield %>

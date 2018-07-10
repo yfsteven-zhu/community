@@ -1,6 +1,7 @@
 <% if @update.updateparent %>
 window.location.reload();
 <% else %>
+window.location.reload();
 $update_parent = $("#updates-widget-of-updateable-<%= @updateable.id %> .updates-list");
 $update_form = $("#updates-widget-of-updateable-<%= @updateable.id %> .update-form form");
 <% end %>

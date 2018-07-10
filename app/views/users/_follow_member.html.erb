@@ -2,7 +2,7 @@
   <li id="member-<%= member.id%>" class="member_li">
   <div class="member_avatar">
     <% if member.picture? %>
-      <%= link_to (image_tag member.picture.url class:"img-circle"), member %>
+      <%= link_to (image_tag member.picture.url, class:"img-circle"), member %>
     <% else %>
       <%= link_to (image_tag ('default.jpg'), class:"img-circle"), member %>
     <% end %>

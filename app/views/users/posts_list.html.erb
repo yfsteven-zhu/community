@@ -15,7 +15,7 @@
     <div class="user_profile_left">
       <div class="user_profile_avatar">
         <% if @user.picture? %>
-          <%= image_tag @user.picture.url class:"img-circle" %>
+          <%= image_tag @user.picture.url, class:"img-circle" %>
         <% else %>
           <%= image_tag ('default.jpg'), class:"img-circle"%>
         <% end %>
@@ -82,11 +82,29 @@
         <%= link_to "Comments", comments_list_user_path(anchor: 'hidden_profile_anchor'), class:"btn btn-default"%>
       </li>
       <li class="user_nav_col_li">
-        <%= link_to "Followings", followinglist_user_path(anchor: 'hidden_profile_anchor'),class:"btn btn-default"%>
+        <%= link_to "Following", followinglist_user_path(anchor: 'hidden_profile_anchor'),class:"btn btn-default"%>
       </li>
       <li class="user_nav_col_li">
         <%= link_to "Followers", followerlist_user_path(anchor: 'hidden_profile_anchor'), class:"btn btn-default"%>
       </li>
+      <% if current_user?(@user) %>
+        <hr style="    margin-top: 5px;border-top: 1px solid #c7c7c7;margin-bottom: 5px;">
+        <li class="user_nav_col_li" >
+          <div class="user_setting" id="setting_div">Setting <b class="caret"></b></div>
+        </li>
+        <li class="user_nav_col_li" id="change_avatar" style="display:none;">
+
+          <%= link_to change_avatar_user_path(anchor: 'hidden_profile_anchor'), class:"setting_link" do %>
+            <div class="user_setting">Update avatar</div>
+          <% end %>
+        </li>
+        <li class="user_nav_col_li" id="change_password" style="display:none;">
+          <%= link_to change_password_user_path(anchor: 'hidden_profile_anchor'), class:"setting_link" do %>
+            <div class="user_setting">Change password</div>
+          <% end %>
+        </li>
+
+      <% end %>
     </ul>
   </div>
 
@@ -95,11 +113,11 @@
     <div style="margin-top:10px;"></div>
     <% if !current_user?(@user) %>
       <header class="user_body_post_header">
-        <%= @user.name %>'s <%= @user.posts.count %> post(s)
+        <%= @user.name %> has <%= @user.posts.count %> post(s)
       </header>
     <% else %>
       <header class="user_body_post_header">
-        Your <%= @user.posts.count %> post(s)
+        You have <%= @user.posts.count %> post(s)
       </header>
     <% end %>
     <input type="text" id="user_post_search" onkeyup="search_post_user()" placeholder="&#xf002; search for title..."
@@ -112,44 +130,3 @@
   </div>
 </div>
 
-<script>
-    function search_post_user(){
-        var input, filter, ul, li, a, i;
-        input = document.getElementById("user_post_search");
-        filter = input.value.toUpperCase();
-        ul = document.getElementsByClassName("user_body_posts_ul")[0];
-        li = ul.getElementsByClassName("user_body_posts_li");
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByClassName("user_body_posts_title")[0];
-            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-            }
-        }
-    }
-
-    document.addEventListener("turbolinks:load", function(){
-        var intro= document.getElementById("introduction");
-        var intro_form= document.getElementsByClassName("intro-control")[0];
-        var intro_submit = document.getElementsByClassName("intro-control-submit")[0];
-        var intro_cancel = document.getElementById("user_profile_cancel_btn");
-
-        $('.edit-intro-btn').click(function(){
-            intro.style.display="none";
-            intro_form.style.display="block";
-            intro_submit.style.display="block";
-            intro_cancel.style.display="block";
-        });
-
-        $('#user_profile_cancel_btn').click(function(){
-            intro.style.display="block";
-            intro_form.style.display="none";
-            intro_submit.style.display="none";
-            intro_cancel.style.display="none";
-
-        });
-
-
-    });
-</script>
