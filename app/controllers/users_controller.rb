@@ -69,15 +69,22 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def mentions
+    respond_to do |format|
+      format.json { render :json => Mention.all(params[:q]) }
+    end
+  end
+
+
   private 
 
     def user_params
-      params.require(:user).permit(:name, :password,
+      params.require(:user).permit(:name, :email,:password,
                                      :password_confirmation,
                                      :security_question,
                                      :security_answer,
                                      :picture,
-                                     :introduction,:crop_x, :crop_y, :crop_w, :crop_h)
+                                     :introduction)
     end
 
     #confirm a logged-in user

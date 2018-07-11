@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_10_031046) do
+ActiveRecord::Schema.define(version: 2018_07_11_022619) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 2018_07_10_031046) do
     t.boolean "admin", default: false
     t.string "picture"
     t.string "introduction"
+    t.string "email"
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 

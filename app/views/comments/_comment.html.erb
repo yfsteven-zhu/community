@@ -37,8 +37,8 @@
           <i class="fa fa-trash-o"></i> DELETE
           <% end %> &bull;
       <% else %>
-        <%= link_to "EDIT", edit_polymorphic_path([comment.commentable, comment]),style:"visibility:hidden", class: 'edit-comment-link', remote: true  %>
-        <%= link_to "DELETE", [comment.commentable, comment], method: :delete, style:"visibility:hidden",class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %>
+        <%= link_to "EDIT", edit_polymorphic_path([comment.commentable, comment]),style:"display:none", class: 'edit-comment-link', remote: true  %>
+        <%= link_to "DELETE", [comment.commentable, comment], method: :delete, style:"display:none",class: 'delete-comment-link', data:{confirm:"Are your sure?"}, remote: true %>
       <% end %>
       <% if logged_in? %>
       <%= link_to polymorphic_path([:reply, comment.commentable, comment]), class: 'reply-comment-link', remote: true do %>

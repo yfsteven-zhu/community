@@ -94,9 +94,10 @@
             width: 570px;
           }
 
-          .update-content{
+          .update-content.short{
             font-size:16px;
             float: left;
+            max-height: 50px;
             padding-top: 3px;
             width: 95%;
             margin-top: 10px;
@@ -104,10 +105,41 @@
             display: block;
             margin-left: 20px;
             padding-bottom: 10px;
+            overflow:hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
             ul>li{
               list-style-type:initial;
             }
           }
+
+          .update-content.full{
+            font-size:16px;
+            float: left;
+            max-height:none;
+            padding-top: 3px;
+            width: 95%;
+            margin-top: 10px;
+            //border-top: 1px solid #e8e8e8;
+            display: block;
+            margin-left: 20px;
+            padding-bottom: 10px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            ul>li{
+              list-style-type:initial;
+            }
+          }
+
+          .read-more {
+            cursor: pointer;
+            display: inline-block;
+            color: #337ab7;
+            margin-left:20px;
+            float:left;
+          }
+
+
           .update-comment-count{
             float:left;
             color: #8b8b8b;

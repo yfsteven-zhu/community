@@ -45,6 +45,10 @@ gem 'rails-assets-jcrop', source: 'https://rails-assets.org'
 
 gem 'notifications', '~> 0.6.0'
 
+gem 'jquery-atwho-rails'
+
+gem 'redcarpet'
+
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

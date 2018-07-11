@@ -1,4 +1,15 @@
-<div class="notifications row">
+<div class="row" style="width: 82.15%;margin: auto;">
+
+<nav class="nav_bar">
+  <ul>
+    <li>
+      <%= link_to "Home", main_app.root_url %> \&nbsp;
+    </li>
+    <li>
+      Notifications
+    </li>
+  </ul>
+</nav>
   <div class="heading clearfix">
     <%= t('notifications.all_notifications') %>
 
@@ -6,6 +17,7 @@
       <%= link_to t('notifications.clean_all'), notifications.clean_notifications_path, class: 'btn btn-sm btn-secondary', method: 'delete' %>
     </span>
   </div>
+  <div class="notifications row">
   <div class="list">
     <% if @notifications.blank? %>
       <div class="no-records"><%= t('notifications.no_records') %></div>
@@ -19,4 +31,5 @@
     <% end %>
   </div>
   <%= paginate @notifications %>
+</div>
 </div>

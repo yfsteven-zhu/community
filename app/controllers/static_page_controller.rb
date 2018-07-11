@@ -15,13 +15,13 @@ class StaticPageController < ApplicationController
       @trending = Post.joins(:comments).where('comments.created_at > ?', 24.hours.ago).group("comments.commentable_id").order("count(comments.id) DESC").limit(5)
     end
 
+    @trending = Post.joins(:comments).where('comments.created_at > ?', 24.hours.ago).group("comments.commentable_id").order("count(comments.id) DESC").limit(5)
     @posts = Post.all.order('created_at desc').paginate(page: params[:page], :per_page => 5)
   end
 
 
   def recent
     @posts = Post.recent.paginate(page: params[:page], :per_page => 5)
-
     @trending = Post.joins(:comments).where('comments.created_at > ?', 24.hours.ago).group("comments.commentable_id").order("count(comments.id) DESC").limit(5)
     render action: :community
   end

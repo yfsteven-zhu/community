@@ -81,7 +81,7 @@ textarea {
 .img-circle.header {
   height: 35px !important;
   width: 35px !important;
-  margin-top: 8px;
+  margin-top: 0px;
 }
 
 /* footer */
@@ -213,10 +213,13 @@ aside {
   margin-top: -29px;
   background-color: #b1dbe6;
   .home_page_welcome{
-    height:350px;
-    width:700px;
+    height:52.16%;
+    width:48.64%;
 
-    transform: translate(15%, 35%);
+    margin-left: 109px;
+    padding-top: 125px;
+    float:left;
+    //transform: translate(15%, 35%);
     .welcome{
       color:white;
     }
@@ -229,14 +232,18 @@ aside {
   }
 
   .home_page_signup{
-    height:400px;
-    width: 350px;
+    height: 450px;
+    width: 400px;
     background: rgba(255, 255, 255, 0.58);
-    transform: translate(270%, -75%);
+    //transform: translate(230%, -65%);
+    /* transform: translate(230%, -65%); */
+    float: left;
+    margin-top: 75px;
+    margin-left: 120px;
     .home_page_signup_h1{
       text-align: center;
-      margin-bottom: 20px;
-      padding-top: 20px;
+      margin-bottom: 25px;
+      padding-top: 25px;
 
     }
 
@@ -356,6 +363,7 @@ ul{
 
     a{
       float: left;
+      width: 100%;
       li{
         width:100%;
       }
@@ -547,4 +555,22 @@ ul{
   background-color: #555;
 }
 
-  
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}

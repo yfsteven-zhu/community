@@ -22,7 +22,7 @@
     <div class="text-body short">
     <div class="posttext">
        <%= sanitize post.content ,
-                    tags:%w(p i b table tbody tr td u s em blockquote ol ul li strong sub sup span hr img object br ),
+                    tags:%w(p i b table tbody tr td u s em blockquote ol ul li strong sub sup img span hr object br ),
                     attributes: %w(id name alt src color href style border cellpadding cellspacing class) %>
     </div>
     </div>
@@ -30,7 +30,8 @@
     float:left;margin-top: -40px;position:absolute;
     height: 4rem;
     width: 550px;"></div>
-    <span class="read-more">...read more</span>
+    <span class="readmore"><%= link_to "more...", post %></span>
+    <div class="picture_slide"></div>
   </div>
 
     <span class="post_info">

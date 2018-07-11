@@ -23,3 +23,18 @@ $(document).on "click", '.cancel-update-link', (e) ->
 $(document).ajaxError (_, xhr)->
   window.location = '/users/sign_in' if xhr.status == 401
 
+class @Update
+  @add_atwho = ->
+    $('#update_content').atwho
+      at: '@'
+      displayTpl:"<li class='mention-item' data-value='(${name})'>${name}</li>",
+      callbacks: remoteFilter: (query, callback) ->
+        if (query.length < 1)
+          return false
+        else
+          $.getJSON '/mentions', { q: query }, (data) ->
+            callback data
+
+jQuery ->
+  Update.add_atwho()
+

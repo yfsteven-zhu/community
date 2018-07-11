@@ -13,6 +13,7 @@
 //= require bootstrap
 //= require jquery
 //= require bootstrap-sprockets
+//= require jquery.atwho
 //= require jquery-ui
 //= require rails-ujs
 //= require jcrop
@@ -22,6 +23,8 @@
 //= require expand.js
 //= require backtotop.js
 //= require profile.js
+//= require update_expand.js
+//= require preview_post_picture.js
 //= require turbolinks
 //= require trix
 //= require_tree .

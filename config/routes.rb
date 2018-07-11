@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Notifications::Engine => "/notifications"
   mount Ckeditor::Engine => '/ckeditor'
   get '/community', to: 'static_page#community'
   delete '/logout', to: 'sessions#destroy'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/signup', to: 'users#new'
   get '/about', to: 'static_page#about'
+  get 'mentions', to: 'users#mentions'
   root 'static_page#home'
 
   resources :users do

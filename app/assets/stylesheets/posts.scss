@@ -139,7 +139,7 @@
 }
 
 .article .text-body.short{
-  max-height: 150px;
+  max-height: 50px;
   width: 550px;
   height: auto;
   overflow: hidden;
@@ -151,6 +151,7 @@
   img{
     width: 145px !important;
     height: auto !important;
+    display: none;
    }
 
   ul{
@@ -165,10 +166,21 @@
   width: 550px;
 }  
 
-.read-more {
+.readmore {
    cursor: pointer;
    display: inline-block;    
    color: #337ab7;
+}
+
+.picture_slide{
+  max-width: 552px;
+  max-height: 175px;
+  img{
+    height: 175px !important;
+    width: auto !important;
+    margin-right: 15px;
+    border: 1px black;
+  }
 }
 
 .post_info{
@@ -334,6 +346,8 @@
 
       h3{
         margin-left: 20px;
+        font-size: 18px;
+        margin-bottom: 15px;
       }
       .trending_content{
         float:left;
@@ -383,6 +397,8 @@
       border-radius: 3px;
       h3{
         margin-left: 20px;
+        font-size: 18px;
+        margin-bottom: 15px;
       }
       .recent_reply_content{
         float:left;

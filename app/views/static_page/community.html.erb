@@ -1,5 +1,5 @@
 <% provide(:title, "Community") %>
-<div class="row"  style="width:1155px;margin:auto;">
+<div class="row"  style="width:82.15%;margin:auto;">
 <nav class="nav_bar">
   <ul>
     <li>
@@ -47,9 +47,21 @@
       </ul>
     </aside>
 <% else %>
-
     <header class="community_header">
       <h1>Community</h1>
+      <% if @posts.any? %>
+        <div class="dropdown" id="sort_dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="background-color: #f2f2f2;
+              color: black;
+              border-color: #f2f2f2;">
+            Sort by: Posts - Newest
+            <span class="caret"></span></button>
+          <ul class="dropdown-menu" id="sort-menu">
+            <li><%= link_to "Posts - Newest", recent_static_page_index_path %></li>
+            <li><%= link_to "Comments - Newest", reply_static_page_index_path %></li>
+          </ul>
+        </div>
+      <% end %>
     </header>
     <div class = "community_post">
       <ol class = "posts">
@@ -64,29 +76,11 @@
         <li class="post_new_topic">
           <%= link_to "Create a new post", login_path, class:"btn btn-primary btn-lg postbtn" ,data: { confirm: "You need sign in first" }%>
         </li>
+        <li class="trending_discussion">
+          <h3>Trending discussions</h3>
+          <%= render 'shared/trending_topic' %>
+        </li>
       </ul>
     </aside>
-
 <% end %>
 </div>
-
-<!--
-<script>
-    document.addEventListener("turbolinks:load", function() {
-        $('#sort-menu li').click(function (e) {
-            $(this).siblings().removeClass('active-tick');
-            $(this).addClass('active-tick');
-            var activeIndex=$('#sort-menu li').index(this);
-            localStorage.setItem('mySelectValue',  activeIndex);
-        });
-
-       var activeIndex = +localStorage.getItem('mySelectValue') + 1;
-        if (isNaN(activeIndex)) {
-            console.log('nothing stored');
-        } else {
-            $('#sort-menu li:nth-child('+activeIndex+')').addClass('active-tick');
-        }
-
-    });
-</script>
--->

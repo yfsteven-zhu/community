@@ -23,6 +23,11 @@ class User < ApplicationRecord
                              message: "only allows letter, number, _, - ,@ and space" },
                         uniqueness: { case_sensitive: false }
 
+  before_save { self.email = email.downcase }
+  VALID_EMAIL_REGEX = /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/
+  validates :email, presence: true, length: { maximum: 255 },
+            format: { with: VALID_EMAIL_REGEX },uniqueness: { case_sensitive: false }
+
   has_secure_password
   validates :password, presence: true, length: {minimum: 6,
         message:"minimum length of password is 6"}, 
@@ -70,6 +75,7 @@ class User < ApplicationRecord
 
   def follow(other_user)
     following << other_user
+    Notification.create(notify_type: 'follow', actor: self, user: other_user)
   end
 
   def unfollow(other_user)

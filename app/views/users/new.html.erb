@@ -1,5 +1,5 @@
 <% provide(:title, 'Sign up' ) %>
-<div class="row"  style="width:1155px;margin:auto;">
+<div class="row"  style="width:82.15%;margin:auto;">
   <nav class="nav_bar">
     <ul>
       <li>
@@ -20,6 +20,8 @@
 
       <%= f.label :name, "User Name", class:'label-control' %>
       <%= f.text_field :name, class:'field-control' %>
+      <%= f.label :email, "Email address", class:'label-control' %>
+      <%= f.text_field :email, class:'field-control' %>
       <%= f.label :password, "Password", class:'label-control'%>
       <%= f.password_field :password, class:'field-control' %>
       <%= f.label :password_confirmation, "Confirm Password", class:'label-control' %>

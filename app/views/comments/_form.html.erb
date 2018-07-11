@@ -2,7 +2,7 @@
   <%= simple_form_for [comment.commentable, comment], remote: true do | f | %>
     <%= f.hidden_field :parent_id %>
     <%= f.trix_editor :content,label: false, placeholder: (f.object.parent_id.nil? ? 'Leave comment here' : 'Leave reply here.'),
-                      input_html: { rows: 5, data:{ 'comment-id': (comment.persisted? ? comment.id : 'new') }} %>
+                      input_html: {rows: 5, data:{ 'comment-id': (comment.persisted? ? comment.id : 'new') }} %>
     <%= link_to "Cancel", "#", 'data-reply': comment.parent_id.present?,
                 style:"margin-top:10px; margin-bottom:20px; width: auto; float: right; margin-left:10px;",
                 class: 'cancel-comment-link btn btn-default btn-sm float-xs-right ml-1' if comment.persisted? or comment.parent%>

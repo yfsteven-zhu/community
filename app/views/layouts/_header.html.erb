@@ -1,33 +1,53 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Community Prototype", recent_static_page_index_path, id: "logo" %>
+    <%= link_to "Community Prototype", main_app.recent_static_page_index_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   root_url %></li>
-        <li><%= link_to "Search", search_path %></li>
+        <li><%= link_to main_app.root_url do %>
+            <i class="fa fa-home" style="font-size:18px;"></i>
+            <% end %></li>
+        <li><%= link_to main_app.search_path do%>
+            <i class="fa fa-search" style="font-size:18px;"></i>
+            <% end %></li>
         <% if logged_in? %>
-          <li class="dropdown">
-            <a href="#" class = "dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
+          <li><%= link_to notifications_path do %>
+            <i class="fa fa-bell" style="font-size: 18px;"></i> <%= Notification.unread_count(current_user) %>
+          <% end %>
+          </li>
+         <li class="dropdown">
+            <a href="#" class = "dropdown-toggle" data-toggle="dropdown" style="padding-bottom: 7px;padding-top: 8px;">
+              <% if current_user.picture? %>
+                <%= image_tag current_user.picture.url, class:"img-circle header"%> <b class="caret"></b>
+              <% else %>
+                <%= image_tag ('default.jpg'), class:"img-circle header"%> <b class="caret"></b>
+              <% end %>
             </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
+            <ul class="dropdown-menu" style="text-align: center; min-width: 95px;">
+              <li><%= link_to "Profile", main_app.user_path(current_user) %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "Log out", logout_path, method: :delete %>
+                <%= link_to "Log out", main_app.logout_path, method: :delete %>
               </li>
             </ul>
           </li>
-          <% if current_user.picture? %>
-            <%= link_to (image_tag current_user.picture.url, class:"img-circle header"), current_user %>
-          <% else %>
-            <%= link_to (image_tag ('default.jpg'), class:"img-circle header"),current_user %>
-          <% end %>
         <% else %>
-          <li><%= link_to "Sign up", signup_path %></li>
-          <li><%= link_to "Log in", login_path %></li>
+          <li class="dropdown">
+            <a href="#" class = "dropdown-toggle" data-toggle="dropdown" style="font-size:18px;">
+              <i class="fa fa-user-circle-o"></i> <b class="caret"></b>
+
+            </a>
+            <ul class="dropdown-menu" style="text-align: center; min-width: 95px;">
+              <li><%= link_to "Sign up", signup_path %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log in", login_path%>
+              </li>
+
+            </ul>
+          </li>
         <% end %>
       </ul>
     </nav>
   </div>
+
 </header>
