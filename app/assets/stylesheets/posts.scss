@@ -35,8 +35,12 @@
   }
 
   p{
-    text-align: center;
-    margin-bottom:130px;
+      margin-left: 34%;
+      float:left;
+      width:100%;
+      //margin-left: -25px;
+      margin-bottom:50px;
+
   }
 }
 
@@ -175,6 +179,7 @@
 .picture_slide{
   max-width: 552px;
   max-height: 175px;
+  overflow: hidden;
   img{
     height: 175px !important;
     width: auto !important;
@@ -256,6 +261,11 @@
     margin-top: 20px;
     border-top: 1px solid #e8e8e8;
     margin-left: 40px;
+    img {
+      max-width:718px;
+      height:auto !important;
+      width:auto !important;
+    }
   }
 }
 

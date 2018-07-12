@@ -88,6 +88,13 @@ GEM
     ckeditor (4.2.4)
       cocaine
       orm_adapter (~> 0.5.0)
+    client_side_validations (11.1.2)
+      jquery-rails (~> 4.3)
+      js_regex (~> 2.2)
+      rails (>= 5.0.0.1, <= 6.0)
+    client_side_validations-simple_form (6.6.0)
+      client_side_validations (>= 9.3.2, < 12)
+      simple_form (>= 3.5, < 5)
     climate_control (0.2.0)
     cocaine (0.6.0)
       terrapin (= 0.6.0)
@@ -115,6 +122,8 @@ GEM
       multi_json
     erubi (1.7.1)
     execjs (2.7.0)
+    faker (1.9.1)
+      i18n (>= 0.7)
     faraday (0.15.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
@@ -136,6 +145,8 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    js_regex (2.2.2)
+      regexp_parser (>= 0.5.0, <= 0.6.0)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -219,6 +230,7 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redcarpet (3.4.0)
+    regexp_parser (0.5.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sanitize (4.6.5)
@@ -294,9 +306,12 @@ DEPENDENCIES
   carrierwave (~> 1.2.2)
   chromedriver-helper
   ckeditor
+  client_side_validations
+  client_side_validations-simple_form
   coffee-rails (~> 4.2)
   elasticsearch-model
   elasticsearch-rails
+  faker
   impressionist
   jbuilder (~> 2.5)
   jquery-atwho-rails

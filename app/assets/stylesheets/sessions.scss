@@ -72,29 +72,33 @@ nobr {
 
   .alert-login_danger{
     width: 350px;
-    margin-left: 402px;
+    margin-left: 34%;
     background-color: #f2dede;
     border-color: #ebccd1;
     color: #a94442;
   }
   .label-control{
-    margin-left: 402px;
+    margin-left: 34%;
   }
 
   .field-control{
-    margin-left: 402px;
+    margin-left: 34%;
     width: 350px;
+    height: 28px !important;
   }
 
   p{
-    text-align: center;
-    margin-bottom:130px;
+    margin-left: 34%;
+    float:left;
+    width:100%;
+    //margin-left: -25px;
+
   }
 
   .checkbox {
     margin-top: -10px;
     span {
-      margin-left: 420px;
+      margin-left: 35.5%;
       font-weight: normal;
     }
   }

@@ -9,12 +9,22 @@ class Comment < ApplicationRecord
 
   after_commit :create_notifications, on: [:create]
   def create_notifications
+    if self.parent.nil?
     Notification.create(
         notify_type: 'comment',
         actor: self.user,
         user: self.commentable.user,
         target: self,
         second_target: self.commentable)
+    else
+      Notification.create(
+          notify_type: 'comment',
+          actor: self.user,
+          user: self.parent.user,
+          target: self,
+          second_target: self.commentable)
+
+      end
   end
 
 

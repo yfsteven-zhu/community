@@ -25,6 +25,9 @@
 //= require profile.js
 //= require update_expand.js
 //= require preview_post_picture.js
+//= require count.js
 //= require turbolinks
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require trix
 //= require_tree .

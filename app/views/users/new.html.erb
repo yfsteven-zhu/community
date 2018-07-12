@@ -15,19 +15,19 @@
     <h1>Sign up</h1>
   </header>
   <div class="signup_form">
-    <%= form_for @user, url:signup_path do |f|  %>
+    <%= form_for @user, url:signup_path, validate: true do |f|  %>
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :name, "User Name", class:'label-control' %>
       <%= f.text_field :name, class:'field-control' %>
       <%= f.label :email, "Email address", class:'label-control' %>
-      <%= f.text_field :email, class:'field-control' %>
+      <%= f.text_field :email, validate: true, class:'field-control' %>
       <%= f.label :password, "Password", class:'label-control'%>
       <%= f.password_field :password, class:'field-control' %>
       <%= f.label :password_confirmation, "Confirm Password", class:'label-control' %>
       <%= f.password_field :password_confirmation, class: 'field-control' %>
 
-      <%= f.submit "Get started", class: "btn btn-primary btn-md", style:"width:350px; margin-left:402px;
+      <%= f.submit "Get started", class: "btn btn-primary btn-md", style:"width:350px; margin-left: 34%;
                                                                           margin-top:20px; margin-bottom:15px;" %>
     <% end %>
     <p>already a member? Click <%= link_to "here", login_path %> to login.</p>

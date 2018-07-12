@@ -123,6 +123,16 @@ input {
   }
 }
 
+.label-control{
+  margin-left: 34%;
+}
+
+.field-control{
+  margin-left: 34%;
+  width: 350px;
+  height: 28px !important;
+}
+
 .field_with_errors {
   @extend .has-error;
   .form-control {
@@ -130,6 +140,10 @@ input {
   }
 }
 
+label.message{
+  color:$state-danger-text;;
+  margin-left:5px;
+}
 
 .editbtn {
   float:right;

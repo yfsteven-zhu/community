@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_022619) do
+ActiveRecord::Schema.define(version: 2018_07_11_175548) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -116,17 +116,6 @@ ActiveRecord::Schema.define(version: 2018_07_11_022619) do
     t.index ["user_id"], name: "index_updates_on_user_id"
   end
 
-  create_table "user_updates", force: :cascade do |t|
-    t.string "updateable_type"
-    t.integer "updateable_id"
-    t.integer "user_id"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["updateable_type", "updateable_id"], name: "index_user_updates_on_updateable_type_and_updateable_id"
-    t.index ["user_id"], name: "index_user_updates_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -137,6 +126,8 @@ ActiveRecord::Schema.define(version: 2018_07_11_022619) do
     t.string "picture"
     t.string "introduction"
     t.string "email"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 

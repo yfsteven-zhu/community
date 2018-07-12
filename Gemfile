@@ -49,6 +49,11 @@ gem 'jquery-atwho-rails'
 
 gem 'redcarpet'
 
+gem 'client_side_validations'
+
+gem 'client_side_validations-simple_form'
+
+gem 'faker'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

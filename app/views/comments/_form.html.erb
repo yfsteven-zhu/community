@@ -1,5 +1,6 @@
 <div class="comment-form">
-  <%= simple_form_for [comment.commentable, comment], remote: true do | f | %>
+  <%= simple_form_for [comment.commentable, comment],remote: true do | f | %>
+
     <%= f.hidden_field :parent_id %>
     <%= f.trix_editor :content,label: false, placeholder: (f.object.parent_id.nil? ? 'Leave comment here' : 'Leave reply here.'),
                       input_html: {rows: 5, data:{ 'comment-id': (comment.persisted? ? comment.id : 'new') }} %>

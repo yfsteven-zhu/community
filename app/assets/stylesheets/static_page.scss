@@ -177,6 +177,7 @@ aside {
     display: block;
     margin-left: 30px;
     margin-top: 15px;
+    width: 90%;
 
   }
   .content {
@@ -232,7 +233,7 @@ aside {
   }
 
   .home_page_signup{
-    height: 450px;
+    min-height: 450px;
     width: 400px;
     background: rgba(255, 255, 255, 0.58);
     //transform: translate(230%, -65%);
@@ -245,6 +246,14 @@ aside {
       margin-bottom: 25px;
       padding-top: 25px;
 
+    }
+
+    label.message{
+      color: #a94442;
+      margin-top: -25px;
+      margin-left: 55px;
+      float: left;
+      margin-bottom: 20px;
     }
 
   }
@@ -402,6 +411,28 @@ ul{
       .postbtn{
         width:100%;
         box-shadow: 3px 3px 0px #5a9afba8;
+      }
+    }
+
+    .count_down{
+      list-style:none;
+      width: 100%;
+      margin-top: 20px;
+      float: right;
+      background-color: white;
+      border: 1px solid #d6d6d6;
+      box-shadow: 3px 3px 0px #bababa;
+      border-radius: 3px;
+      #count_title{
+        text-align: center;
+        font-size: 24px;
+        margin-top: 0px;
+      }
+      #count{
+        text-align: center;
+        font-size: 26px;
+        margin-top:0px;
+        color: coral;
       }
     }
     .trending_discussion{

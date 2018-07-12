@@ -1,19 +1,28 @@
 <% provide(:title, "Forgot password") %>
+<div class="row"  style="width:82.15%;margin:auto;">
+  <nav class="nav_bar">
+    <ul>
+      <li>
+        <%= link_to "Home", root_url %> \&nbsp;
+      </li>
+      <li>
+        Forgot password
+      </li>
+    </ul>
+  </nav>
 
-<br></br>
-<h1>Forgot password</h1>
-<br></br>
+  <header class="login_header">
+    <h1>Forgot password</h1>
+  </header>
 
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <%= form_for(:password_reset, url:password_resets_path) do |f| %>
-      <%= f.label :security_quesiton, "Security Question" %>
-      <%= f.text_field :security_question, class: 'form-control', readonly: true %>
+  <div class="forgotpassword_form">
+    <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+      <%= f.label :email, class:'label-control' %>
+      <%= f.email_field :email, class: 'field-control' %>
 
-
-      
-      <br></br>
-      <%= f.submit "Submit", class: "btn btn-primary btn-md" %>
+      <%= f.submit "Submit", class: "btn btn-primary btn-md", style:"width:350px; margin-left:402px; margin-bottom:130px;
+                                                                          margin-top:5px;" %>
     <% end %>
+
   </div>
 </div>

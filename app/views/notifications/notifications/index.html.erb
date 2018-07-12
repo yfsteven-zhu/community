@@ -23,10 +23,12 @@
       <div class="no-records"><%= t('notifications.no_records') %></div>
     <% else %>
       <% @notification_groups.each do |group, notifications| %>
+
         <div class="notification-group">
           <div class="group-title"><%= group %></div>
           <%= render notifications %>
         </div>
+
       <% end %>
     <% end %>
   </div>

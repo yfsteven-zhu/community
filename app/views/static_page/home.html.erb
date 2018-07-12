@@ -16,25 +16,25 @@
   <% if !logged_in? %>
   <div class="home_page_signup">
     <h1 class="home_page_signup_h1">Join Today!</h1>
-    <%= form_for @user, url:signup_path do |f|  %>
+    <%= form_for @user, url:signup_path , validate: true do |f|  %>
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.text_field :name, class: 'form-control',
-                       placeholder:"username", style:"margin-bottom: 25px;
+                       placeholder:"username", style:"margin-bottom: 25px;float:left;
                        margin-left: 55px;
                        width: 70%;"%>
 
-      <%= f.text_field :email, class: 'form-control', placeholder:"email", style:"margin-bottom: 25px;
+      <%= f.text_field :email, class: 'form-control', placeholder:"email", style:"margin-bottom: 25px;float:left;
                        margin-left: 55px;
                        width: 70%;" %>
 
       <%= f.password_field :password,
-                           placeholder:"password", class: 'form-control', style:"margin-bottom: 25px;
+                           placeholder:"password", class: 'form-control', style:"margin-bottom: 25px;float:left;
                            margin-left: 55px;
                            width: 70%;" %>
 
       <%= f.password_field :password_confirmation,
-                           placeholder:"password confirmation", class: 'form-control',style:"margin-bottom: 25px;
+                           placeholder:"password confirmation", class: 'form-control',style:"margin-bottom: 25px;float:left;
                            margin-left: 55px;
                            width: 70%;" %>
 
@@ -45,33 +45,6 @@
     <% end %>
 </div>
 
-<div class="row" style="width:82.15%;margin:auto;">
-
-  <section class="feature_and_posts">
-    <div class="today_feature">
-      <h3 id="featured_h3">Featured today</h3>
-
-    </div>
-
-    <div class="latest_posts">
-      <h3>Latest posts</h3>
-      <%= render 'latest_posts' %>
-    </div>
-  </section>
-
-  <aside class="home_page_aside">
-    <ul>
-      <li class="trending_discussion">
-        <h3>Trending discussions</h3>
-
-      </li>
-      <li class="most_views">
-        <h3>Most views</h3>
-
-      </li>
-    </ul>
-  </aside>
-</div>
 
 
 

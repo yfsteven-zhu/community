@@ -11,7 +11,6 @@
     </ul>
   </nav>
   <% if logged_in? %>
-
     <header class="community_header">
       <h1>Community</h1>
       <% if @posts.any? %>
@@ -41,6 +40,10 @@
         <li class="post_new_topic">
           <%= link_to "Create a new post", postnew_path, class:"btn btn-primary btn-lg postbtn" %>
         </li>
+        <li class="count_down">
+          <p id="count_title">Next Game: <br>Belgium vs. England</p>
+          <p id="count"></p>
+        </li>
         <li class="trending_discussion">
           <h3>Trending discussions</h3>
           <%= render 'shared/trending_topic' %>
@@ -48,9 +51,21 @@
       </ul>
     </aside>
   <% else %>
-
     <header class="community_header">
       <h1>Community</h1>
+      <% if @posts.any? %>
+        <div class="dropdown" id="sort_dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="background-color: #f2f2f2;
+              color: black;
+              border-color: #f2f2f2;">
+            Sort by: Comments - Newest
+            <span class="caret"></span></button>
+          <ul class="dropdown-menu" id="sort-menu">
+            <li><%= link_to "Posts - Newest", recent_static_page_index_path %></li>
+            <li><%= link_to "Comments - Newest", reply_static_page_index_path %></li>
+          </ul>
+        </div>
+      <% end %>
     </header>
     <div class = "community_post">
       <ol class = "posts">
@@ -63,10 +78,17 @@
     <aside class="community_aside">
       <ul>
         <li class="post_new_topic">
-          <%= link_to "Create a new post", login_path, class:"btn btn-primary btn-lg postbtn" ,data: { confirm: "You need sign in first" }%>
+          <%= link_to "Create a new post", login_path, class:"btn btn-primary btn-lg postbtn" ,data: { confirm: "To create a new post, log in first!" }%>
+        </li>
+        <li class="count_down">
+          <p id="count_title">Next Game: <br>Belgium vs. England</p>
+          <p id="count"></p>
+        </li>
+        <li class="trending_discussion">
+          <h3>Trending discussions</h3>
+          <%= render 'shared/trending_topic' %>
         </li>
       </ul>
     </aside>
-
   <% end %>
 </div>

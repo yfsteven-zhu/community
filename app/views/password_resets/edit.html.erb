@@ -1,22 +1,33 @@
-<% provide(:title, "Reset password')
+<% provide(:title, 'Reset password') %>
+<div class="row"  style="width:82.15%;margin:auto;">
+  <nav class="nav_bar">
+    <ul>
+      <li>
+        <%= link_to "Home", root_url %> \&nbsp;
+      </li>
+      <li>
+        Reset password
+      </li>
+    </ul>
+  </nav>
 
-<br></br>
-<h1>Reset password</h1>
-<br></br>
-
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
+  <header class="login_header">
+    <h1>Reset password</h1>
+  </header>
+  <div class="forgotpassword_form">
     <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
-      <%= render 'shared/error_message', object:f.object %>
+      <%= render 'shared/error_messages',object: f.object %>
 
-      <%= f.label :password, "New Password" %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= hidden_field_tag :email, @user.email %>
 
-      <%= f.label :password_confirmation, "Confirmation your new password" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
- 
-      <br></br>
-      <%= f.submit "Update password", class: "btn btn-primary btn-md" %>
-      <% end %>
+      <%= f.label :password, class:'label-control' %>
+      <%= f.password_field :password, class: 'field-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation", class:'label-control' %>
+      <%= f.password_field :password_confirmation, class: 'field-control' %>
+
+      <%= f.submit "Update password", class: "btn btn-primary btn-md", style:"width:350px; margin-left:402px; margin-bottom:130px;
+                                                                          margin-top:5px;" %>
+    <% end %>
   </div>
 </div>
