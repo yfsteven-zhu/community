@@ -12,7 +12,7 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container-fluid" style="padding-left:0px; padding-right:0px; background-color:#f2f2f2;
-        margin-top: -8px;    padding-bottom: 20px;">
+        margin-top: -8px;    #padding-bottom: 20px;">
       <% if !flash[:login_danger].present? %>
       <% flash.each do |message_type, message| %>
         <div class = "alert alert-<%= message_type %>" style="text-align:center;"><%= message %></div>

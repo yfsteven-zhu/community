@@ -31,6 +31,28 @@
         <%= sanitize link_to @post.user.name, @post.user %> &bull;
         <%= localize(@post.created_at, format: :long) %>
       </span>
+
+      <span class="post_show_control">
+              <% if current_user && current_user.admin? %>
+      <%= link_to @post, method: :delete,
+                  data: { confirm: "You sure?" }, class:"deletebtn" do %>
+        <i class="fa fa-trash-o"></i> delete
+          <% end %>
+          <%= link_to edit_post_path(@post), class:"editbtn" do %>
+        <i class="fa fa-edit"></i> edit
+          <% end %>
+    <% end %>
+        <% if current_user?(@post.user)&&!current_user.admin? %>
+      <%= link_to @post, method: :delete,
+                  data: { confirm: "You sure?" }, class:"deletebtn" do %>
+          <i class="fa fa-trash-o"></i> delete
+          <% end %>
+          <%= link_to edit_post_path(@post), class:"editbtn" do %>
+        <i class="fa fa-edit"></i> edit
+        <% end %>
+
+    <% end %>
+      </span>
     </div>
 
     <div class="post_show_body_content">
